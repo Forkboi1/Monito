@@ -1,0 +1,117 @@
+:root{
+    --body-color: #FCEED5;
+}
+
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: var(--body-color);
+    padding: 0;
+    margin: 0;
+}
+
+.big{
+    position: fixed;
+    width: 1585px;
+    left: -26.08%;
+    right: 44.01%;
+    top: 32.76%;
+    bottom: 3.41%; 
+    background: #F1D092;
+    border-radius: 213px;
+    transform: matrix(0.99, 0.17, -0.24, 0.97, 0, 0); 
+}
+
+.small{
+    position: fixed;
+    z-index: 1;
+    width: 1465px;
+    left: -24.87%;
+    right: 48.98%;
+    top: 36.39%;
+    bottom: 1.98%;
+    background: #FCEED5;
+    border-radius: 213px;
+    transform: matrix(0.99, 0.17, -0.24, 0.97, 0, 0);
+}
+
+.cat{
+    z-index: 1;
+    width: 625px;
+    position: fixed;
+    left: 0%;
+    right: 34.27%;
+    top: 64.83%;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+
+.steps{
+    position: fixed;
+    width: 232.01px;
+    height: 729.32px;
+    left: 1577px;
+    top: 105px;
+}
+
+.brand{
+    z-index: 2;
+    position: fixed;
+    width: 566px;
+    left: 35.42%;
+    right: 35.1%;
+    top: 9.03%;
+    bottom: 81.65%;
+}
+
+nav{
+display: grid;
+grid-template-columns: auto auto auto auto auto;
+justify-content: space-between;
+align-items: center;
+padding: 27.484px 20px 27.484px 118px;
+position: absolute;
+width: 1413.46px;
+height: 104.97px;
+left: 0px;
+top: 0px;
+font-weight: bold;
+}
+
+.navMenu{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: space-between;
+    position:relative;
+    gap: 47px;
+}
+
+.searchAndCurrency{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}
+
+.searchBox{
+    width: 275px;
+    height: 50px;
+    border-radius: 45px;
+    border: none;
+}
+
+button{
+    width: 160px;
+    height: 50px;
+    border-radius: 55.95px;
+    border: none;
+    color: white;
+}
+
+button.createPost{
+    background-color: #003459;
+}
+button.login{
+    background-color: #0078CD;
+}
