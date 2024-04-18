@@ -1,0 +1,55 @@
+header {
+    display: flex;
+    height: 3vh;
+    margin: 40px 20px 20px 20px;
+
+}
+
+#brand {
+    height: 30px;
+    margin-right: 20px;
+}
+
+#links {
+    margin-top: 10px;
+    margin-right: 20px;
+    width: 21%;
+    min-width: 410px;
+}
+
+#search_form {
+    margin-top: 5px;
+    margin-right: 20px;
+}
+
+#search {
+    border-radius: 10px;
+    height: 30px;
+}
+
+input::placeholder {
+    padding: 10px;
+}
+
+.header_link {
+    text-decoration: none;
+    color: #003459;
+    font-weight: 800;
+    padding: 20px 20px 20px 20px;
+}
+
+.header_link:hover {
+    color: #0078CD;
+}
+
+#buttons * {
+    margin-right: 10px;
+}
+
+#login {
+    background-color: #0078CD;
+}
+
+#createPost {
+    background-color: #003459;
+}
