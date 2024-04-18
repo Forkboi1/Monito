@@ -1,30 +1,30 @@
-:root{
+:root {
     --body-color: #FCEED5;
 }
 
-html{
+html {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
+body {
     background-color: var(--body-color);
     padding: 0;
     margin: 0;
 }
 
-.big{
+.big {
     position: fixed;
     width: 1585px;
     left: -26.08%;
     right: 44.01%;
     top: 32.76%;
-    bottom: 3.41%; 
+    bottom: 3.41%;
     background: #F1D092;
     border-radius: 213px;
-    transform: matrix(0.99, 0.17, -0.24, 0.97, 0, 0); 
+    transform: matrix(0.99, 0.17, -0.24, 0.97, 0, 0);
 }
 
-.small{
+.small {
     position: fixed;
     z-index: 1;
     width: 1465px;
@@ -37,7 +37,7 @@ body{
     transform: matrix(0.99, 0.17, -0.24, 0.97, 0, 0);
 }
 
-.cat{
+.cat {
     z-index: 1;
     width: 625px;
     position: fixed;
@@ -48,7 +48,7 @@ body{
 }
 
 
-.steps{
+.steps {
     position: fixed;
     width: 232.01px;
     height: 729.32px;
@@ -56,7 +56,7 @@ body{
     top: 105px;
 }
 
-.brand{
+.brand {
     z-index: 2;
     position: fixed;
     width: 566px;
@@ -66,52 +66,45 @@ body{
     bottom: 81.65%;
 }
 
-nav{
-display: grid;
-grid-template-columns: auto auto auto auto auto;
-justify-content: space-between;
-align-items: center;
-padding: 27.484px 20px 27.484px 118px;
-position: absolute;
-width: 1413.46px;
-height: 104.97px;
-left: 0px;
-top: 0px;
-font-weight: bold;
-}
-
-.navMenu{
+nav {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     justify-content: space-between;
-    position:relative;
+    align-items: center;
+    padding: 27.484px 20px 27.484px 118px;
+    position: absolute;
+    width: 1413.46px;
+    height: 104.97px;
+    left: 0px;
+    top: 0px;
+    font-weight: bold;
+}
+
+.navMenu {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: space-between;
+    position: relative;
     gap: 47px;
 }
 
-.searchAndCurrency{
+.searchAndCurrency {
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-between;
 }
 
-.searchBox{
+.searchBox {
     width: 275px;
     height: 50px;
     border-radius: 45px;
     border: none;
 }
 
-button{
+button {
     width: 160px;
     height: 50px;
     border-radius: 55.95px;
     border: none;
     color: white;
-}
-
-button.createPost{
-    background-color: #003459;
-}
-button.login{
-    background-color: #0078CD;
 }
