@@ -1,8 +1,19 @@
 header {
     display: flex;
     height: 3vh;
-    margin: 40px 20px 20px 20px;
+    margin-top: 40px
+}
 
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+    max-width: 1200px;
 }
 
 #brand {
@@ -12,7 +23,7 @@ header {
 
 #links {
     margin-top: 10px;
-    margin-right: 20px;
+    margin-right: 10px;
     width: 21%;
     min-width: 410px;
 }
@@ -42,6 +53,11 @@ input::placeholder {
     color: #0078CD;
 }
 
+#buttons {
+    margin-left: 20px;
+    min-width: 400px;
+}
+
 #buttons * {
     margin-right: 10px;
 }
@@ -52,4 +68,10 @@ input::placeholder {
 
 #createPost {
     background-color: #003459;
+}
+
+select {
+    border: none;
+    background-color: transparent;
+    font-weight: 800;
 }
