@@ -22,11 +22,12 @@ body {
 }
 
 #links {
-    margin-top: 10px;
+    margin-top: 5px;
     margin-right: 10px;
     width: 21%;
-    min-width: 410px;
+    min-width: 405px;
 }
+
 
 #search_form {
     margin-top: 5px;
@@ -74,4 +75,11 @@ select {
     border: none;
     background-color: transparent;
     font-weight: 800;
+}
+
+#cart_pic {
+    height: 30px;
+    width: 30px;
+    margin-top: 5px;
+    margin-right: 10px;
 }
