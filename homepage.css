@@ -1,0 +1,51 @@
+/* .top_page{
+    background-color: var(--body-color);
+    max-width: 2000px;
+} */
+
+body{
+    background-color: white;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.below_header{
+    border-bottom:rebeccapurple 10px solid;
+}
+
+.adver{
+    font-style: normal;
+    font-weight: 100;
+    font-size: 58.8943px;
+    line-height: 67px;
+}
+
+.adver>strong{
+    /* Thousands more fun! */
+font-style: normal;
+font-size: 45.1523px;
+line-height: 59px;
+}
+.pet_view_head{
+    margin-top: 60px;
+}
+
+.smh{
+    font-weight: 700;
+    font-size: 23.5577px;
+    line-height: 35px;
+}
+
+.pet_view{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+.animal{
+    background-color: white;
+    max-width: fit-content;
+    padding: 5px;
+}

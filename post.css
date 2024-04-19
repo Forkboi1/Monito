@@ -3,7 +3,7 @@ header {
     height: 3vh;
     margin-top: 40px;
     margin-bottom: 70px;
-    border-bottom: #003459 solid;
+    border-bottom: #002A48 solid;
     padding-bottom: 10px;
     min-height: 40px;
 }
@@ -53,7 +53,7 @@ input[type="search"] {
 
 .header_link {
     text-decoration: none;
-    color: #003459;
+    color: #002A48;
     font-weight: 800;
     padding: 20px 20px 20px 20px;
 }
