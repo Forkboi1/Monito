@@ -1,11 +1,14 @@
 /* .top_page{
     background-color: var(--body-color);
     max-width: 2000px;
-}
+} */
 
 body{
     background-color: white;
-} */
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
 
 .below_header{
     border-bottom:rebeccapurple 10px solid;
@@ -38,6 +41,7 @@ line-height: 59px;
     display: grid;
     grid-template-columns: auto auto auto auto;
     margin-top: 20px;
+    gap: 15px;
 }
 
 .animal{
