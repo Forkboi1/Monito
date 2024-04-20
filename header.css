@@ -19,6 +19,10 @@ html {
 
 }
 
+#curimg {
+    height: 20px;
+    width: 20px;
+}
 
 #brand {
     height: 30px;
