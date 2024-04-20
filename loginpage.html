@@ -5,38 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <link rel="stylesheet" href="general_design.css">
     <link rel="stylesheet" href="loginpage.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="header.css">
     <title>Main Page - Monito</title>
 </head>
 
     <body>
-        <!-- DON'T TOUCH THIS CODE, JUST LEAVE IT HERE I WILL REMOVE IT MYSELF 
-            <nav>
-            <div class="navMenu">
-                <div>Monito</div>
-                <div>Home</div>
-                <div>Profile</div>
-                <div>About</div>
-                <div>Contact</div>
+        <header>
+            <img src="content/brand.png" alt="brand" id="brand">
+            <div id="links">
+                <a href="homepage.html" class="header_link">Home</a>
+                <a href="personal_page.html" class="header_link">Profile</a>
+                <a href="about.html" class="header_link">About</a>
+                <a href="contact.html" class="header_link">Contact</a>
             </div>
-
-            <div>cart icon</div>
-
-            <form action="" method="post" class="searchAndCurrency">
-                <input type="search" placeholder="   Search something here!" class="searchBox">
-                <datalist title="currency">
-                    
-                </datalist>
+            <a href=""><img src="content/shopping-cart.png" alt="" id="cart_pic"></a>
+            <form action="POST" id="search_form">
+                <input type="search" name="s" id="search" placeholder="Search something here!">
             </form>
-
-            <button class="createPost">Create post</button>
-
-            <button class="login">Login</button>
-
-        </nav> -->
-        <!-- <img src="small.png" class="small">
-        <img src="big.png" class="big"> -->
-        <div class="small"></div>
-        <div class="big"></div>
+            <img src="content/sa.png" alt="flag" class="currency">
+            <select name="curr" id="currencyBox">
+                <option value="SAR">SAR</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="JPY">JPY</option>
+            </select>
+            <div id="buttons">
+                  <button id="createPost">Create Post</button>
+                  <button id="login">Login</button>
+            </div>   
+    </header>
+        <div class="small" style="z-index: -1;"></div>
+        <div class="big" style="z-index: -1;"></div>
         <img src="content\cat.svg" class="cat">
         <img src="content\steps.png" class="steps">
         <!--<img src="content\brand.png" class="brand">--> <!-- Comment this if you want to remove the brand name-->
@@ -61,7 +61,38 @@
         </div>
 
         <footer>
-    
+            <div class="container" id="footer_content">
+                <table>
+                    <tr>
+                        <td class="footer_header">Company</td>
+                        <td class="footer_header">Services</td>
+                        <td class="footer_header">Legal</td>
+                        <td class="footer_header">Location</td>
+                    </tr>
+                    <tr>
+                        <td>Contact Us</td>
+                        <td>Home</td>
+                        <td>Terms and Policies</td>
+                        <td colspan="2" rowspan="2"> KFUPM, <br>
+                                        Student Housing District, <br>
+                                        Dhahran 31261 Saudi Arabia. </td>
+                    </tr>
+                    <tr>
+                        <td>About Us</td>
+                        <td>Profile</td>
+                        <td>FAQ</td>            
+                    </tr>
+                    <tr>
+                        <td>Careers</td>
+                        <td>Sell</td>
+                        <td>Refund Policy</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="container" id="footer_content2">
+                <p class="footer_header"><img src="content/brand_wh.png" alt="" style="width:128px;"> &nbsp; &nbsp; Get in Touch: &nbsp; &nbsp;<img src="content/instagram-logo.png" alt="" class="social_icons"> &nbsp; &nbsp;<img src="content/twitter.png" alt="" class="social_icons"> &nbsp; &nbsp;<img src="content/tiktok.png" alt="" class="social_icons"> &nbsp; &nbsp;<img src="content/linkedin-logo.png" alt="" class="social_icons"></p>
+            </div>
+            <p id="copyright">© 2024 KFUPM SWE363-232 Team 9. All rights reserved.</p>
         </footer>
     </body>
 </html>
