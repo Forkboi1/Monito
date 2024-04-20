@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="general_design.css">
+    <script src="currency.js"></script>
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 </head>
 <body>
 <div class = "container"> 
- <header>
+<header>
         <img src="content/brand.png" alt="brand" id="brand">
         <div id="links">
             <a href="homepage.html" class="header_link">Home</a>
@@ -25,9 +26,9 @@
         <form action="POST" id="search_form">
             <input type="search" name="s" id="search" placeholder="Search something here!">
         </form>
-        <img src="content/sa.png" alt="flag" class="currency">
+        <img src="content/sa.png" alt="flag" class="currency" id=curimg>
         <select name="curr" id="currencyBox">
-            <option value="SAR">SAR</option>
+            <option value="SAR" selected>SAR</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
             <option value="JPY">JPY</option>

@@ -7,35 +7,36 @@
     <link rel="stylesheet" href="loginpage.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="header.css">
+     <script src="currency.js"></script>
     <title>Main Page - Monito</title>
 </head>
 
     <body>
         <div class="container">
-        <header>
-            <img src="content/brand.png" alt="brand" id="brand">
-            <div id="links">
-                <a href="homepage.html" class="header_link">Home</a>
-                <a href="personal_page.html" class="header_link">Profile</a>
-                <a href="about.html" class="header_link">About</a>
-                <a href="contact.html" class="header_link">Contact</a>
-            </div>
-            <a href=""><img src="content/shopping-cart.png" alt="" id="cart_pic"></a>
-            <form action="POST" id="search_form">
-                <input type="search" name="s" id="search" placeholder="Search something here!">
-            </form>
-            <img src="content/sa.png" alt="flag" class="currency">
-            <select name="curr" id="currencyBox">
-                <option value="SAR">SAR</option>
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="JPY">JPY</option>
-            </select>
-            <div id="buttons">
-                  <button id="createPost">Create Post</button>
-                  <button id="login">Login</button>
-            </div>   
-    </header>
+       <header>
+        <img src="content/brand.png" alt="brand" id="brand">
+        <div id="links">
+            <a href="homepage.html" class="header_link">Home</a>
+            <a href="personal_page.html" class="header_link">Profile</a>
+            <a href="about.html" class="header_link">About</a>
+            <a href="contact.html" class="header_link">Contact</a>
+        </div>
+        <a href=""><img src="content/shopping-cart.png" alt="" id="cart_pic"></a>
+        <form action="POST" id="search_form">
+            <input type="search" name="s" id="search" placeholder="Search something here!">
+        </form>
+        <img src="content/sa.png" alt="flag" class="currency" id=curimg>
+        <select name="curr" id="currencyBox">
+            <option value="SAR" selected>SAR</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="JPY">JPY</option>
+        </select>
+        <div id="buttons">
+              <button id="createPost">Create Post</button>
+              <button id="login">Login</button>
+        </div>   
+</header>
         <div class="small" style="z-index: -1;"></div>
         <div class="big" style="z-index: -1;"></div>
         
