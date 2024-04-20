@@ -22,6 +22,22 @@ function main() {
 
     }
 
+    lgn = document.getElementById("login");
+    create = document.getElementById("createPost")
+    lgn.addEventListener("click", function () {
+        window.location.href = "loginpage.html";
+    })
+    create.addEventListener("click", function () {
+        window.location.href = "loginpage.html";
+    })
+
+    reg = document.getElementById("goto-register-button")
+    reg.addEventListener("click", function () {
+        window.location.href = "registerpage.html";
+    })
+
+
+
     baseImage = document.getElementById("post_pic")
     var image1 = document.getElementById("1");
     var image2 = document.getElementById("2");
@@ -45,6 +61,8 @@ function main() {
     image4.addEventListener("click", function () {
         baseImage.src = image4.src;
     });
+
+
 
 }
 
