@@ -41,7 +41,7 @@ input::placeholder {
     color: rgb(112, 112, 112);
 }
 
-input[type="search"] {
+#searchbox {
     background-color: rgb(241, 208, 146);
     height: 45px;
     border: none;
@@ -60,7 +60,7 @@ button {
     font-size: x-large;
 }
 
-select {
+.filter {
     background-color: rgb(241, 208, 146);
     height: 45px;
     border: none;
