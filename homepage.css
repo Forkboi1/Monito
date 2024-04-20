@@ -3,52 +3,49 @@
     max-width: 2000px;
 } */
 
-body{
-    background-color: white;
-    max-width: 1400px;
-    margin: 0 auto;
-    position: relative;
+
+.hero_banner {
+    border-bottom: rebeccapurple 10px solid;
 }
 
-.hero_banner{
-    border-bottom:rebeccapurple 10px solid;
-}
-
-.adver{
+.adver {
     font-style: normal;
     font-weight: 100;
     font-size: 58.8943px;
     line-height: 67px;
 }
 
-.buttons{
+.buttons {
     margin: 30px 0px;
 }
-.explore{
+
+.explore {
     background-color: #003459;
 }
-.intro_view{
+
+.intro_view {
     color: #003459;
     border: #003459 1px solid;
 }
 
-.adver>strong{
+.adver>strong {
     /* Thousands more fun! */
-font-style: normal;
-font-size: 45.1523px;
-line-height: 59px;
+    font-style: normal;
+    font-size: 45.1523px;
+    line-height: 59px;
 }
-.pet_view_head{
+
+.pet_view_head {
     margin-top: 60px;
 }
 
-.smh{
+.smh {
     font-weight: 700;
     font-size: 23.5577px;
     line-height: 35px;
 }
 
-.pet_view{
+.pet_view {
     position: relative;
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -57,18 +54,18 @@ line-height: 59px;
     z-index: 1;
 }
 
-.animal{
+.animal {
     background-color: white;
     max-width: fit-content;
     padding: 5px;
 }
 
-.animal img{
+.animal img {
     width: 330px;
     max-height: 300px;
 }
 
-.banner{
+.banner {
     margin-top: 100px;
     /* padding-top: 371px; */
     height: 371px;
@@ -78,26 +75,27 @@ line-height: 59px;
     overflow: hidden;
 }
 
-.banner_design{
+.banner_design {
     background-color: #FCEED5;
     width: 767px;
     height: 623px;
     border-radius: 97px;
-    rotate:-60deg;
+    rotate: -60deg;
     position: absolute;
     margin-left: 900px;
     margin-top: -300px;
 }
 
-.twinNigga{
+.twinNigga {
     position: absolute;
     left: 82px;
 }
 
-.product_view_head{
+.product_view_head {
     margin-top: 60px;
 }
-.product_view{
+
+.product_view {
     position: relative;
     display: grid;
     grid-template-columns: auto auto auto auto;
