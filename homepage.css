@@ -10,7 +10,7 @@ body{
     position: relative;
 }
 
-.below_header{
+.hero_banner{
     border-bottom:rebeccapurple 10px solid;
 }
 
@@ -19,6 +19,17 @@ body{
     font-weight: 100;
     font-size: 58.8943px;
     line-height: 67px;
+}
+
+.buttons{
+    margin: 30px 0px;
+}
+.explore{
+    background-color: #003459;
+}
+.intro_view{
+    color: #003459;
+    border: #003459 1px solid;
 }
 
 .adver>strong{
@@ -38,14 +49,42 @@ line-height: 59px;
 }
 
 .pet_view{
+    position: relative;
     display: grid;
     grid-template-columns: auto auto auto auto;
-    margin-top: 20px;
+    margin: 20px 0px;
     gap: 15px;
+    z-index: 1;
 }
 
 .animal{
     background-color: white;
     max-width: fit-content;
     padding: 5px;
+}
+
+.banner{
+    margin-top: 100px;
+    /* padding-top: 371px; */
+    height: 371px;
+    border-radius: 20px;
+    background-color: #003459;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner_design{
+    background-color: #FCEED5;
+    width: 767px;
+    height: 623px;
+    border-radius: 97px;
+    rotate:-60deg;
+    position: absolute;
+    margin-left: 900px;
+    margin-top: -300px;
+}
+
+.twinNigga{
+    position: absolute;
+    left: 82px;
 }

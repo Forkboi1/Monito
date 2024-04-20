@@ -1,0 +1,16 @@
+.outer-square {
+    width: 200px; /* Adjust size as needed */
+    height: 200px; /* Adjust size as needed */
+    background-color: blue; /* Just for visualization */
+    position: relative;
+  }
+  
+  .inner-square {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    background-color: red; /* Just for visualization */
+    position: absolute;
+    top: 50%; /* Move the inner square down by half its height */
+    left: 50%; /* Move the inner square right by half its width */
+    transform: translate(-50%, -50%); /* Center the inner square */
+  }
