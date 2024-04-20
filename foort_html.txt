@@ -1,0 +1,34 @@
+<footer>
+        <div class="container" id="footer_content">
+            <table>
+                <tr>
+                    <td class="footer_header">Company</td>
+                    <td class="footer_header">Services</td>
+                    <td class="footer_header">Legal</td>
+                    <td class="footer_header">Location</td>
+                </tr>
+                <tr>
+                    <td>Contact Us</td>
+                    <td>Home</td>
+                    <td>Terms and Policies</td>
+                    <td colspan="2" rowspan="2"> KFUPM, <br>
+                                    Student Housing District, <br>
+                                    Dhahran 31261 Saudi Arabia. </td>
+                </tr>
+                <tr>
+                    <td>About Us</td>
+                    <td>Profile</td>
+                    <td>FAQ</td>            
+                </tr>
+                <tr>
+                    <td>Careers</td>
+                    <td>Sell</td>
+                    <td>Refund Policy</td>
+                </tr>
+            </table>
+        </div>
+        <div class="container" id="footer_content2">
+            <p class="footer_header"><img src="content/brand_wh.png" alt="" style="width:128px;"> &nbsp; &nbsp; Get in Touch: &nbsp; &nbsp;<img src="content/instagram-logo.png" alt="" class="social_icons"> &nbsp; &nbsp;<img src="content/twitter.png" alt="" class="social_icons"> &nbsp; &nbsp;<img src="content/tiktok.png" alt="" class="social_icons"> &nbsp; &nbsp;<img src="content/linkedin-logo.png" alt="" class="social_icons"></p>
+        </div>
+        <p id="copyright">© 2024 KFUPM SWE363-232 Team 9. All rights reserved.</p> 
+    </footer>
