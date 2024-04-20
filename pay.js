@@ -1,6 +1,12 @@
 window.onload = main
 
 function main() {
+    pay_button = document.getElementById("pay_button")
+    pay_button.addEventListener("click", function () {
+        window.location.href = "thanks.html";
+
+    })
+
     let currency = document.getElementById("currencyBox")
     currency.selectedIndex = 0
     currency.addEventListener("change", change)
@@ -24,29 +30,4 @@ function main() {
 
 
 
-    lgn = document.getElementById("login");
-    create = document.getElementById("createPost")
-    lgn.addEventListener("click", function () {
-        window.location.href = "loginpage.html";
-
-    })
-    create.addEventListener("click", function () {
-        window.location.href = "loginpage.html";
-    })
-
-    reg = document.getElementById("goto-register-button")
-    reg.addEventListener("click", function () {
-        window.location.href = "registerpage.html";
-    })
-
-    pay_button.addEventListener("click", function () {
-        alert("a")
-        window.location.href = "thanks.html";
-
-    })
-
-
-
-
 }
-

@@ -22,31 +22,11 @@ function main() {
 
     }
 
+    to_pay = document.getElementById("pay")
 
-
-    lgn = document.getElementById("login");
-    create = document.getElementById("createPost")
-    lgn.addEventListener("click", function () {
-        window.location.href = "loginpage.html";
+    to_pay.addEventListener("click", function () {
+        window.location.href = "pay.html";
 
     })
-    create.addEventListener("click", function () {
-        window.location.href = "loginpage.html";
-    })
-
-    reg = document.getElementById("goto-register-button")
-    reg.addEventListener("click", function () {
-        window.location.href = "registerpage.html";
-    })
-
-    pay_button.addEventListener("click", function () {
-        alert("a")
-        window.location.href = "thanks.html";
-
-    })
-
-
-
 
 }
-
