@@ -65,6 +65,7 @@ line-height: 59px;
 
 .animal img{
     width: 330px;
+    max-height: 300px;
 }
 
 .banner{
