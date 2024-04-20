@@ -1,0 +1,56 @@
+#box {
+    width: 1000px;
+    height: 600px;
+    background-color: #F1D092;
+    margin-top: 10px;
+    margin-bottom: 200px;
+    border-radius: 10px;
+    border: #003459 6px solid;
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1400px;
+}
+
+#box_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 30px;
+}
+
+#box_form * {
+    margin-bottom: 20px;
+}
+
+.message {
+    height: 200px !important;
+}
+
+#box_form input,
+textarea {
+    color: white;
+    background-color: #003459;
+    border: none;
+    border-radius: 10px;
+    height: 10px;
+    padding: 10px 10px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 64px;
+}
+
+.send {
+    background-color: #003459;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 400px;
+    margin-top: 10px;
+}
