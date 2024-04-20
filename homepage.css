@@ -63,6 +63,10 @@ line-height: 59px;
     padding: 5px;
 }
 
+.animal img{
+    width: 330px;
+}
+
 .banner{
     margin-top: 100px;
     /* padding-top: 371px; */
@@ -87,4 +91,16 @@ line-height: 59px;
 .twinNigga{
     position: absolute;
     left: 82px;
+}
+
+.product_view_head{
+    margin-top: 60px;
+}
+.product_view{
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin: 20px 0px;
+    gap: 15px;
+    z-index: 1;
 }

@@ -32,6 +32,12 @@ html {
     min-width: 405px;
 }
 
+#cart_pic {
+    height: 30px;
+    width: 30px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
 
 #search_form {
     margin-top: 5px;
