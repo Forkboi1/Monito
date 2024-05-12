@@ -1,0 +1,70 @@
+{% extends "layout_header.njk" %}
+
+{% block content %}
+
+    <section class="hero_banner">
+        <div class="adver"> One More Friend<br>
+            <strong>Thousands More Fun!</strong>
+        </div>
+        <br>
+        <span>Having a pet means you have more joy, a new friend, a happy<br>
+            person who will always be with you to have fun. We have 200+<br>
+            different pets that can meet your needs!</span>
+        <div class="buttons">
+            <button class="intro_view">View Intro 📹</button>
+            <button class="explore">Explore Now</button>
+        </div>
+    </section>
+
+{# here petPost should be used #}
+    <section class="pet_view_head">
+        <caption>Whats new?<br>
+            <div class="smh">Take a look at some of our pets</div>
+        </caption>
+
+        <article class="pet_view">
+            <a href="post.html">
+                <div class="animal">
+                    <img src="content/Omars_birds_Lutino_Cockatiel-1.jpg" alt="M303 - Lutino Cockatiel">
+                    <table>
+                        <tr>
+                            <td><strong>SKU12454 - Lutino Cockatiel</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Gene: Male # Age:07 Months</td>
+                        </tr>
+                        <tr>
+                            <td><strong>352 SAR</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </a>
+        </article>
+    </section>
+
+{# here productPost should be used #}
+    <section class="product_view_head">
+        <caption>Hard to choose right products for your pets?<br>
+            <div class="smh">Our Products</div>
+         </caption>
+        <article class="product_view">
+            <a href="">
+                <div class="animal">
+                    <img src="content/p1.png" alt="Reflex Plus Adult Cat Food Salmon">
+                    <table>
+                        <tr>
+                            <td><strong>Reflex Plus Adult Cat Food Salmon</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Product: Animal Food</td>
+                        </tr>
+                        <tr>
+                            <td><strong>300 SAR</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </a>
+        </article>
+    </section>
+
+{% endblock %}

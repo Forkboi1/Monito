@@ -21,19 +21,19 @@
             <a href="about.html" class="header_link">About</a>
             <a href="contact.html" class="header_link">Contact</a>
         </div>
-        <a href="cart.html"><img src="content/shopping-cart.png" alt="" id="cart_pic"></a>
+        <a hidden href="cart.html"><img src="content/shopping-cart.png" alt="" id="cart_pic"></a>
         <form action="POST" id="search_form">
-            <input type="search" name="s" id="search" placeholder="Search something here!">
+            <input hidden type="search" name="s" id="search" placeholder="Search something here!">
         </form>
-        <img src="content/sa.png" alt="flag" class="currency" id=curimg>
-        <select name="curr" id="currencyBox">
+        <img src="content/sa.png" alt="flag" class="currency" id=curimg hidden>
+        <select name="curr" id="currencyBox" hidden>
             <option value="SAR" selected>SAR</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
             <option value="JPY">JPY</option>
         </select>
         <div id="buttons">
-              <button id="createPost">Create Post</button>
+              <button id="createPost" hidden>Create Post</button>
               <button id="login">Login</button>
         </div>   
 </header>
