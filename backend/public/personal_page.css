@@ -1,0 +1,354 @@
+/* Rectangle 18 */
+#Rec18 {
+    width: 246px;
+    height: 69.4px;
+    left: 109px;
+    top: 21.06px;
+    background: #F1D092;
+    border-radius: 20px;
+    display: flex;
+    padding: 2px 2px 2px 2px;
+    border: #003459 solid 6px;
+}
+
+#name {
+    margin-left: 10px;
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+
+#top_part {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#bottom_part {
+    display: flex;
+    margin-bottom: 100px;
+}
+
+
+
+.icon {
+    border: #003459 solid 2px;
+    border-radius: 100px;
+}
+
+/* Rectangle 19 */
+#Rec19 {
+    display: flex;
+    width: 246px;
+    height: 330px;
+    background: #F1D092;
+    border-radius: 20px;
+    flex-direction: column;
+    padding-top: 20px;
+    align-items: center;
+    border: #003459 solid 6px;
+    margin-right: 100px;
+}
+
+#Rec19 * {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 5px 5px 5px 5px;
+}
+
+#Name {
+    width: 68.5px;
+    height: 13px;
+    left: 202px;
+    top: 46px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 12px;
+    color: #000000;
+}
+
+#Greetings {
+    width: 280px;
+    text-align: center;
+    padding: 10px;
+    height: 50px;
+    margin-left: 194px;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 12px;
+    color: #000000;
+    background-color: #003459;
+
+}
+
+#Greetings * {
+    font-weight: bold;
+    color: white;
+}
+
+#usr_info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+}
+
+#usr_info * {
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+#fullName_l {
+    width: 80px;
+    height: 11.49px;
+    left: 458px;
+    top: 130.19px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 12px;
+    color: #000000;
+}
+
+#fName {
+    width: 125px;
+    height: 35px;
+    left: 449px;
+    top: 149.82px;
+    background: #F1D092;
+    border-radius: 10px;
+    border-style: hidden;
+    padding-left: 10px;
+    border: #003459 solid 3px;
+}
+
+#lName {
+    width: 125px;
+    height: 35px;
+    left: 619px;
+    top: 149.82px;
+    background: #F1D092;
+    border-radius: 10px;
+    border-style: hidden;
+    padding-left: 10px;
+    border: #003459 solid 3px;
+}
+
+#email_l {
+    width: 38px;
+    height: 11.49px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 12px;
+    color: #000000;
+}
+
+#email {
+    width: 277px;
+    height: 35px;
+    background: #F1D092;
+    border-radius: 10px;
+    border-style: hidden;
+    padding-left: 10px;
+    border: #003459 solid 3px;
+}
+
+#password {
+    width: 277px;
+    height: 35px;
+    background: #F1D092;
+    border-radius: 10px;
+    border-style: hidden;
+    padding-left: 10px;
+    font-family: Verdana;
+    font-size: 20px;
+    border: #003459 solid 3px;
+
+}
+
+#password_l {
+    /* Password */
+    width: 69.5px;
+    height: 11.49px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 12px;
+    color: #000000;
+}
+
+#forget {
+    width: 138px;
+    height: 18.67px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.5px;
+    line-height: 12px;
+}
+
+#location_l {
+    width: 61px;
+    height: 11.49px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 12px;
+    /* identical to box height, or 79% */
+    color: #000000;
+
+
+}
+
+#country {
+    width: 125px;
+    height: 35px;
+    background: #F1D092;
+    border-radius: 10px;
+    padding-left: 10px;
+    border: #003459 solid 3px;
+}
+
+#city {
+    /* Rectangle 25 */
+    width: 125px;
+    height: 35px;
+    background: #F1D092;
+    border-radius: 10px;
+    padding-left: 10px;
+    border: #003459 solid 3px;
+}
+
+#save {
+    width: 126.5px;
+    height: 40.21px;
+    background: #F1D092;
+    border-radius: 10px;
+    border-style: hidden;
+    border: #003459 solid 3px;
+}
+
+#save:hover {
+    background-color: orange;
+}
+
+.button_div {
+    display: flex;
+}
+
+#personal {
+    box-sizing: border-box;
+    width: 120px;
+    height: 33.98px;
+    background-color: #003459;
+    border-radius: 25px;
+
+}
+
+#personal:focus {
+    color: black;
+    background-color: #FEF3DF;
+}
+
+#posts {
+    box-sizing: border-box;
+    width: 120px;
+    height: 32.15px;
+    border-radius: 25px;
+    background-color: #003459;
+}
+
+#posts:focus {
+    color: black;
+    background-color: #FEF3DF;
+}
+
+#wallet {
+    box-sizing: border-box;
+    width: 120px;
+    height: 34.16px;
+    border-radius: 25px;
+    background-color: #003459;
+}
+
+#wallet:focus {
+    color: black;
+    background-color: #FEF3DF;
+}
+
+#orders {
+    /* Frame 60 */
+    box-sizing: border-box;
+    width: 120px;
+    height: 34.16px;
+    border-radius: 25px;
+    background-color: #003459;
+}
+
+#orders:focus {
+    color: black;
+    background-color: #FEF3DF;
+}
+
+#hand {
+    position: absolute;
+    width: 557.99px;
+    height: 521.44px;
+    z-index: -1;
+}
+
+#pfp {
+    width: 64px;
+    height: 64px;
+    margin-left: 10px;
+    padding-top: 2px;
+}
+
+#count {
+    width: 22.5px;
+    height: 22.5px;
+    border-radius: 360px;
+    background: #FEF3DF;
+
+}
+
+#dollar {
+    width: 22.5px;
+    height: 22.5px;
+    background: #FEF3DF;
+    border-radius: 360px;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+}
+
+#personal_icon {
+    width: 22.5px;
+    height: 22.5px;
+    background-color: #003459;
+}
+
+#posts_icon {
+    width: 22.5px;
+    height: 22.5px;
+    background-color: #003459;
+}
+
+#wallet_icon {
+    width: 22.5px;
+    height: 22.5px;
+    background-color: #003459;
+}
+
+#orders_icon {
+    width: 22.5px;
+    height: 22.5px;
+    background-color: #003459;
+}

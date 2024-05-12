@@ -1,0 +1,84 @@
+body {
+/* Herro Banner */
+
+position: relative;
+width: 960px;
+height: 853px;
+left: 0px;
+top: 0px;
+margin: 0 auto;
+background: linear-gradient(102.87deg, rgba(252, 238, 213, 0.6) 6.43%, rgba(252, 238, 213, 0.6) 78.33%, rgba(255, 231, 186, 0.6) 104.24%);
+overflow-x: hidden;
+overflow-y: hidden;
+
+
+
+}
+.brand1{
+    width: 56.44px;
+    height: 19.63px;
+}
+.rec1{
+    /* Rectangle 9 */
+
+position: absolute;
+width: 792.51px;
+height: 703.56px;
+left: 475.1px;
+top: -157px;
+
+background: #F1D092;
+border-radius: 156.5px;
+transform: rotate(11.53deg);
+
+}
+.rec2{
+    /* Rectangle 17 */
+
+position: absolute;
+width: 732.88px;
+height: 694.04px;
+left: 34.2px;
+top: 142.21px;
+
+/* Secondary Color/Mon Yellow 40 */
+background: #FCEED5;
+border-radius: 156.5px;
+transform: rotate(11.53deg);
+
+}
+.rec3{
+    /* Rectangle 9 */
+
+position: absolute;
+width: 792.51px;
+height: 703.56px;
+left: 669.5px;
+top: 533.5px;
+
+background: #103559;
+border-radius: 156.5px;
+transform: rotate(11.53deg);
+
+}
+.textpart{
+    /* Thank you! Your order has been processed successfully! For the details of your order, check your profile or email address. */
+
+position: absolute;
+width: 855px;
+height: 236px;
+left: 52px;
+top: 268.5px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 800;
+font-size: 64px;
+line-height: 29px;
+/* or 18% */
+text-align: center;
+
+color: #103559;
+
+
+}

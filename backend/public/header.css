@@ -1,0 +1,97 @@
+header {
+    display: flex;
+    height: 3vh;
+    margin-top: 40px;
+    margin-bottom: 70px;
+    border-bottom: #002A48 solid;
+    padding-bottom: 10px;
+    min-height: 40px;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+
+}
+
+#curimg {
+    height: 40px;
+    width: 40px;
+}
+
+#brand {
+    height: 30px;
+    margin-right: 20px;
+}
+
+#links {
+    margin-top: 5px;
+    margin-right: 10px;
+    width: 21%;
+    min-width: 405px;
+}
+
+#cart_pic {
+    height: 30px;
+    width: 30px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+#search_form {
+    margin-top: 5px;
+    margin-right: 20px;
+}
+
+#search {
+    border-radius: 20px;
+    height: 30px;
+    margin-left: 10px;
+    width: 300px
+}
+
+input[type="search"] {
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+
+
+.header_link {
+    text-decoration: none;
+    color: #002A48;
+    font-weight: 800;
+    padding: 20px 20px 20px 20px;
+}
+
+.header_link:hover {
+    color: #0078CD;
+}
+
+#buttons {
+    margin-left: 20px;
+    min-width: 400px;
+}
+
+#buttons * {
+    margin-right: 10px;
+    height: 35px;
+}
+
+#login {
+    background-color: #0078CD;
+}
+
+#createPost {
+    background-color: #003459;
+}
+
+select {
+    border: none;
+    background-color: transparent;
+    font-weight: 800;
+}
