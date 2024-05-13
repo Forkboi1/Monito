@@ -1,8 +1,15 @@
+const nunjuck = require("nunjucks");
+
 document.getElementById("login-button").addEventListener("click",validateLoginForm)
 document.getElementById("register-button").addEventListener("click",validateRegisterForm)
 document.getElementById("logout-button").addEventListener("click",logout)
 document.getElementById("toggle-form-button").addEventListener("click",toggleLoginRegisterForm)
+document.documentElement.addEventListener("DOMContentLoaded",startWeb);
 
+function startweb(){
+    const njkHTML = nunjuck.renderString("../views/loginpage.njk", {});
+    document.documentElement.innerHTML = njkHTML
+}
 function main() {    
     let currency = document.getElementById("currencyBox")
     currency.selectedIndex = 0
@@ -69,9 +76,15 @@ function validateRegisterForm(){
             throw new Error('choose other email or password.');
         }
         return response.json();
+
     })
     .then(data => {
         localStorage.setItem("user", JSON.stringify(data));
+    })
+    .then(njkTemplate => {
+        const njkHTML = nunjuck.renderString("../views/homepage.njk", 
+        localStorage.getItem);
+        document.documentElement.innerHTML = njkHTML;
         document.getElementById("login").toggleAttribute("hidden",true);
     })
     .catch(error => {
@@ -123,4 +136,5 @@ function logout(){
 function toggleLoginRegisterForm(){
     document.getElementsByClassName("login-form-container").toggleAttribute("hidden");
     document.getElementsByClassName("register-form-container").toggleAttribute("hidden");
+    document.documentElement.innerHTML = ""
 }

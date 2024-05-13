@@ -49,6 +49,7 @@ input[type="text"], input[type="password"], input[type="email"] {
 button {
     background-color: #0078CD;
     font-size: x-large;
+    cursor: pointer;
 }
 
 #login-button {
