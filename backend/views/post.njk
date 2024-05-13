@@ -5,7 +5,7 @@
 {# will loop here over the provided post either a pet or a porduct
 comments also will be in post collection #}
     <p id="post_tags"><a href="">Monito</a>><a href="">Animals</a>><a href="">Birds</a>><a href="">Cockatiels</a>><a href="">12454</a></p>
-    <p class="post_title">Lutino cockatiel for Sale!!</p>
+    <p class="post_title"> {{post.title}} </p>
     <div id="post">
         <section id="post_grid">
         <div id="post_imgs">
@@ -24,49 +24,49 @@ comments also will be in post collection #}
                     <caption><strong>Animal Info</strong></caption>
                     <tr>
                         <td>
-                            <strong>Name:</strong>Lemon
+                            <strong>Name:</strong>{{post.name}}
                         </td>
                         <td>
-                            <strong>Age:</strong>7 Months
+                            <strong>Age:</strong>{{post.age}}
                         </td>
                         <td>
-                            <strong>Gender:</strong>Male
+                            <strong>Gender:</strong>{{post.gender}}
                         </td>
                         <td>
-                            <strong>Height</strong>20cm
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>Species:</strong>Parrot
-                        </td>
-                        <td>
-                            <strong>Type:</strong>Cockatiel
-                        </td>
-                        <td>
-                            <strong>Mutation:</strong>Lutino
-                        </td>
-                        <td>
-                            <strong>Weight</strong>60g
+                            <strong>Height</strong>{{post.height}}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <strong>Tame:</strong>Yes
+                            <strong>Species:</strong>{{post.species}}
                         </td>
                         <td>
-                            <strong>Clipped:</strong>No
+                            <strong>Type:</strong>{{post.type}}
+                        </td>
+                        <td>
+                            <strong>Mutation:</strong>{{post.mutation}}
+                        </td>
+                        <td>
+                            <strong>Weight</strong>{{post.weight}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Tame:</strong>{{post.tame}}
+                        </td>
+                        <td>
+                            <strong>Clipped:</strong>{{post.clipped}}
                         </td>
                         <td colspan="2">
-                            <strong>Breeding Location:</strong>Saudi (Al Khobar)
+                            <strong>Breeding Location:</strong>{{post.breedingLocation}}
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <strong>SKU#:</strong>12454
+                            <strong>{{post.code.substring(0,2)}}#:</strong>{{post.code.substring(2,post.code.length)}}
                         </td>
                         <td style="font-size: 30px;" colspan="2">
-                            <strong>Price: 352 SAR</strong>
+                            <strong>Price: {{post.price}} SAR</strong>
                         </td>
                     </tr>
                 </table>
@@ -74,10 +74,12 @@ comments also will be in post collection #}
 
             <div id="post_card">
                 <p><strong>Animal Description:</strong></p>
-                <p id="desc">I run a bird farm, and this beautiful bird is one of it's children, I hope that the one that buys him can take care of him, he is a healthy boy that can sing and dance, he is kind and not akin to biting.</p>
-                <p><strong>Seller Rating: 4.2 ★★★★☆ (120)</strong></p>
-                <p><strong>Seller Location: Al khobar</strong></p>
-                <a href="">@AHMED123</a>
+                <p id="desc">{{post.description}}</p>
+                {% for rate in user.rating%}
+                <p><strong>Seller Rating: </strong></p>
+                {% endfor %}
+                <p><strong>Seller Location: {{user.userLocation}}</strong></p>
+                <a href="">@{{user.username}}</a>
                 
             </div>
         </div>
@@ -89,19 +91,20 @@ comments also will be in post collection #}
             <button id="wish_button">Add to WishList</button>
             <form action="GET">
                  <label for="quantity" style="font-weight: 800; margin-right: 8px;">Quantity</label>
-                 <input type="number" id="quantity" name="quantity" min="1" max="1" value="1"> 
+                 <input type="number" id="quantity" name="quantity" min="0" max=`${post.quantity}` value="quantity"> 
             </form>
         </div>
     </div>
 
     <div id="comments">
-        <p style="font-size: 32px;"><strong>Comments (3)</strong></p>
+        <p style="font-size: 32px;"><strong>Comments ({{post.comments}})</strong></p>
+        {% for comment in post.comments%}
         <div class="comment">
-            <p class="bolded"><a href="">By: @Omar_H</a></p>
-            <p>This is a beautiful bird, I would love to take it if you include a cage with it.</p>
-            <p class="right_aligned bolded"> 14 Hours Ago</p>
+            <p class="bolded"><a href="">By: @{{comment.username}}</a></p>
+            <p>{{comment.text}}</p>
+            <p class="right_aligned bolded"> {{comment.addedAt}} </p>
         </div>
-
+        {% endfor %}
         <p>End of Comments</p>
         <p>1</p>
     </div>
