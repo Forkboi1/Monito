@@ -1,4 +1,4 @@
-const nunjuck = require("nunjucks");
+// import { renderString } from "../node_modules/nunjucks";
 
 // document.getElementById("login-button").addEventListener("click",validateLoginForm)
 // document.getElementById("register-button").addEventListener("click",validateRegisterForm)
@@ -80,7 +80,7 @@ async function validateRegisterForm(){
     })
     .then(data => {
         localStorage.setItem("user", JSON.stringify(data));
-        const njkHTML = nunjuck.renderString("../views/homepage.njk", {data})
+        const njkHTML = renderString("../views/homepage.njk", {data})
         document.documentElement.innerHTML = njkHTML;
         document.getElementById("login").toggleAttribute("hidden",true);
     })
@@ -93,32 +93,69 @@ async function validateRegisterForm(){
 
 async function validateLoginForm(){
     
-    apiUrl = "https://swe363api.onrender.com/auth"
-    let email = document.getElementById("username-email").value.trim();
-    let password = document.getElementById("Logpassword").value.trim();
-    if (email === "" ||  password === ""){
+    // apiUrl = "https://swe363api.onrender.com/auth"
+
+    // let email = document.getElementById("username-email").value.trim();
+    // let password = document.getElementById("Logpassword").value.trim();
+    // if (email === "" ||  password === ""){
+    //     alert("Please fill in all fields.");
+    //     return;
+    // }
+
+    // await fetch(apiUrl,{method: "POST", body: JSON.stringify({email: email, password: password})
+    // })
+    // .then((response) => {
+    //     if (!response.ok) {
+    //         throw new Error('Incorrect email or password.');
+    //       }
+    //       return response.json();
+    // })
+    // .then(data => {
+    //     localStorage.setItem("user", JSON.stringify(data));
+    //     // const njkHTML = renderString("../views/homepage.njk", {data})
+    //     // document.documentElement.innerHTML = njkHTML;
+    //     window.location.href = "homepage.html"
+    //     document.getElementById("login").toggleAttribute("hidden",true);
+    // })
+    // .catch(error => {
+    //     // Alert the user if there's an error
+    //     alert(error.message);
+    //   });
+
+
+    const apiUrl = "https://swe363api.onrender.com/auth";
+    const email = document.getElementById("username-email").value.trim();
+    const password = document.getElementById("Logpassword").value.trim();
+
+    if (email === "" || password === "") {
         alert("Please fill in all fields.");
         return;
     }
-
-    await fetch(apiUrl,{method: "POST", body: JSON.stringify({email: email, password: password})
+    req = new Request("http://localhost:3000/question", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
     })
-    .then((response) => {
+    
+    try {
+        // const response = await fetch(apiUrl, {
+        //     method: "POST",
+        //     body: JSON.stringify({ email, password })
+        // });
+
+        const response = await fetch(req);
         if (!response.ok) {
             throw new Error('Incorrect email or password.');
-          }
-          return response.json();
-    })
-    .then(data => {
+        }
+
+        const data = await response.json();
         localStorage.setItem("user", JSON.stringify(data));
-        const njkHTML = nunjuck.renderString("../views/homepage.njk", {data})
-        document.documentElement.innerHTML = njkHTML;
-        document.getElementById("login").toggleAttribute("hidden",true);
-    })
-    .catch(error => {
-        // Alert the user if there's an error
+        window.location.href = "homepage.html";
+    } catch (error) {
         alert(error.message);
-      });
+    }
 }
 
 function userLoged(){
