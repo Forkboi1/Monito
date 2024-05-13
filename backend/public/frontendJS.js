@@ -101,7 +101,7 @@ async function validateLoginForm(){
         return;
     }
 
-    await fetch(apiUrl,{method: "POST", headers:{'Content-Type': 'application/json'}, body: JSON.stringify({email: email, password: password})
+    await fetch(apiUrl,{method: "POST", body: JSON.stringify({email: email, password: password})
     })
     .then((response) => {
         if (!response.ok) {
