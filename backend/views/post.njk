@@ -76,7 +76,7 @@ comments also will be in post collection #}
                 <p><strong>Animal Description:</strong></p>
                 <p id="desc">{{post.description}}</p>
                 {% for rate in user.rating%}
-                <p><strong>Seller Rating: </strong></p>
+                <p><strong>Seller Rating: </strong></p> {# need to figure a way to include ratings of a user #}
                 {% endfor %}
                 <p><strong>Seller Location: {{user.userLocation}}</strong></p>
                 <a href="">@{{user.username}}</a>
@@ -92,6 +92,7 @@ comments also will be in post collection #}
             <form action="GET">
                  <label for="quantity" style="font-weight: 800; margin-right: 8px;">Quantity</label>
                  <input type="number" id="quantity" name="quantity" min="0" max=`${post.quantity}` value="quantity"> 
+                 {# here we also need to include the current quantity in the max attribute for the input above #}
             </form>
         </div>
     </div>
@@ -102,7 +103,8 @@ comments also will be in post collection #}
         <div class="comment">
             <p class="bolded"><a href="">By: @{{comment.username}}</a></p>
             <p>{{comment.text}}</p>
-            <p class="right_aligned bolded"> {{comment.addedAt}} </p>
+            <p class="right_aligned bolded"> {{comment.addedAt}} </p> {# also here need to figure a way on how to make the date as "14 hours ago"
+            using the date object #}
         </div>
         {% endfor %}
         <p>End of Comments</p>

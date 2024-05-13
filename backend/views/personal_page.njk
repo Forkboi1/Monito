@@ -6,9 +6,9 @@
     <div id="top_part">
         <div id = "Rec18">
             <img id = "pfp" src = "content/man(1).png" alt = "profile picture">
-            <p id="name"><strong>@AHMED123</strong></p>
+            <p id="name"><strong>@{{user.username}}</strong></p>
         </div>
-        <div id = "Greetings"><p>Hello, Ahmed :)</p></div>
+        <div id = "Greetings"><p>Hello, {{user.name}} :)</p></div>
     </div>
 
     <div id = "bottom_part">
@@ -38,16 +38,16 @@
         <form action = "" id="usr_info">
             <label for = "fName" id = "fullName_l">Full Name</label>
             <div id="name_div">
-            <input type="text" id="fName" name="fName" placeholder="Ahmed">
-            <input type="text" id="lName" name="lName" placeholder="Aljassem"></div>
+            <input type="text" id="fName" name="fName" value=`${user.name.split()[0]}`>
+            <input type="text" id="lName" name="lName" value=`&{user.name.split()[1]}`></div>
             <label for = "email" id ="email_l">Email</label>
             <div id="email_div">  
-                <input type="text" id="email" name="email" value="Ahmed@gmail.com">
+                <input type="text" id="email" name="email" value=`&{user.email}`>
             </div>
 
             <label for ="password" id ="password_l">Password</label>
             <div>
-                <input type="password" id="password" name="password" value="123456789">
+                <input type="password" id="password" name="password" value=`&{user.password}`>
             </div>
             <a id ="forget"href="">Forgot your password?</a>
 
