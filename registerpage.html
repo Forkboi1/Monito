@@ -13,64 +13,65 @@
 
     <body>
         <div class="container">
-       <header>
-        <img src="content/brand.png" alt="brand" id="brand">
-        <div id="links">
-            <a href="homepage.html" class="header_link">Home</a>
-            <a href="personal_page.html" class="header_link">Profile</a>
-            <a href="about.html" class="header_link">About</a>
-            <a href="contact.html" class="header_link">Contact</a>
-        </div>
-        <a href="cart.html"><img src="content/shopping-cart.png" alt="" id="cart_pic"></a>
-        <form action="POST" id="search_form">
-            <input type="search" name="s" id="search" placeholder="Search something here!">
-        </form>
-        <img src="content/sa.png" alt="flag" class="currency" id=curimg>
-        <select name="curr" id="currencyBox">
-            <option value="SAR" selected>SAR</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="JPY">JPY</option>
-        </select>
-        <div id="buttons">
-              <button id="createPost">Create Post</button>
-              <button id="login">Login</button>
-        </div>   
-</header>
-        <div class="small" style="z-index: -1;"></div>
-        <div class="big" style="z-index: -1;"></div>
+            <header>
+                <img src="content/brand.png" alt="brand" id="brand">
+                <div id="links">
+                    <a href="homepage.html" class="header_link">Home</a>
+                    <a href="personal_page.html" class="header_link">Profile</a>
+                    <a href="about.html" class="header_link">About</a>
+                    <a href="contact.html" class="header_link">Contact</a>
+                </div>
+                <a href="cart.html"><img src="content/shopping-cart.png" alt="" id="cart_pic"></a>
+                <form action="POST" id="search_form">
+                    <input type="search" name="s" id="search" placeholder="Search something here!">
+                </form>
+                <img src="content/sa.png" alt="flag" class="currency" id=curimg>
+                <select name="curr" id="currencyBox">
+                    <option value="SAR" selected>SAR</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="JPY">JPY</option>
+                </select>
+                <div id="buttons">
+                    <button id="createPost">Create Post</button>
+                    <button id="login">Login</button>
+                </div>   
+            </header>
+            <div class="small" style="z-index: -1;"></div>
+            <div class="big" style="z-index: -1;"></div>
         
-        <img src="content\steps.png" class="steps">
-        
-        <div class="form-container">
-            <div>
-                <img src="content\brand.png" class="login-brand">
+            <img src="content\steps.png" class="steps">
+            
+            <div class="form-container">
+                <div>
+                    <img src="content\brand.png" class="login-brand">
+                </div>
+                <div class="login-container">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username">
+
+                    <div class="space-between-fields"></div>
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+
+                    <div class="space-between-fields"></div>
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+
+                    <div class="space-between-fields"></div>
+
+                    <label for="verify-password">Verify Password</label>
+                    <input type="password" name="verify-password" id="verify-password">
+
+                    <button id="register-button">Register</button>
+                    <p id="new-user-text">Already have an account?</p>
+                    <button id="goto-register-button">Log In</button>
+                </div>
             </div>
-            <div class="login-container">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username">
 
-                <div class="space-between-fields"></div>
-
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email">
-
-                <div class="space-between-fields"></div>
-
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
-
-                <div class="space-between-fields"></div>
-
-                <label for="verify-password">Verify Password</label>
-                <input type="password" name="verify-password" id="verify-password">
-
-                <button id="login-button">Register</button>
-                <p id="new-user-text">Already have an account?</p>
-                <button id="goto-register-button">Log In</button>
-            </div>
         </div>
-    </div>
         <footer>
             <div class="container" id="footer_content">
                 <table>

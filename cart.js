@@ -28,5 +28,4 @@ function main() {
         window.location.href = "pay.html";
 
     })
-
 }
