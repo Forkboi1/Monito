@@ -1,15 +1,15 @@
 const nunjuck = require("nunjucks");
 
-document.getElementById("login-button").addEventListener("click",validateLoginForm)
-document.getElementById("register-button").addEventListener("click",validateRegisterForm)
-document.getElementById("logout-button").addEventListener("click",logout)
-document.getElementById("toggle-form-button").addEventListener("click",toggleLoginRegisterForm)
-document.documentElement.addEventListener("DOMContentLoaded",startWeb);
+// document.getElementById("login-button").addEventListener("click",validateLoginForm)
+// document.getElementById("register-button").addEventListener("click",validateRegisterForm)
+// document.getElementById("logout-button").addEventListener("click",logout)
+// document.getElementById("toggle-form-button").addEventListener("click",toggleLoginRegisterForm)
+// document.addEventListener("DOMContentLoaded",startWeb);
 
-function startweb(){
-    const njkHTML = nunjuck.renderString("../views/loginpage.njk", {});
-    document.documentElement.innerHTML = njkHTML
-}
+// function startWeb(){
+//     const njkHTML = nunjuck.renderString("../views/loginpage.njk", {});
+//     document.documentElement.innerHTML = njkHTML
+// }
 function main() {    
     let currency = document.getElementById("currencyBox")
     currency.selectedIndex = 0
@@ -54,13 +54,13 @@ function main() {
 }
 
 
-function validateRegisterForm(){
+async function validateRegisterForm(){
     apiUrl = "https://swe363api.onrender.com/register"
     let email = document.getElementById("email").value.trim();
-    let password = document.getElementById("password").value.trim();
+    let password = document.getElementById("Regpassword").value.trim();
     let username = document.getElementById("username").value.trim();
     let verifyPassword = document.getElementById("verify-password").value.trim();
-    if (email === "" |  password === "" | username === "" | verifyPassword === ""){
+    if (email === "" ||  password === "" || username === "" || verifyPassword === ""){
         alert("Please fill in all fields.");
         return;
     } else if (password === verifyPassword){
@@ -68,7 +68,7 @@ function validateRegisterForm(){
         return
     }
 
-    fetch(apiUrl,{method: "POST", headers:{'Content-Type': 'application/json'}, 
+    await fetch(apiUrl,{method: "POST", headers:{'Content-Type': 'application/json'}, 
     body: JSON.stringify({email: email, password: password, username: username})
     })
     .then(response => {
@@ -80,10 +80,7 @@ function validateRegisterForm(){
     })
     .then(data => {
         localStorage.setItem("user", JSON.stringify(data));
-    })
-    .then(njkTemplate => {
-        const njkHTML = nunjuck.renderString("../views/homepage.njk", 
-        localStorage.getItem);
+        const njkHTML = nunjuck.renderString("../views/homepage.njk", {data})
         document.documentElement.innerHTML = njkHTML;
         document.getElementById("login").toggleAttribute("hidden",true);
     })
@@ -94,18 +91,19 @@ function validateRegisterForm(){
 
 }
 
-function validateLoginForm(){
+async function validateLoginForm(){
+    
     apiUrl = "https://swe363api.onrender.com/auth"
     let email = document.getElementById("username-email").value.trim();
-    let password = document.getElementById("password").value.trim();
-    if (email === "" |  password === ""){
+    let password = document.getElementById("Logpassword").value.trim();
+    if (email === "" ||  password === ""){
         alert("Please fill in all fields.");
         return;
     }
 
-    fetch(apiUrl,{method: "POST", headers:{'Content-Type': 'application/json'}, body: JSON.stringify({email: email, password: password})
+    await fetch(apiUrl,{method: "POST", headers:{'Content-Type': 'application/json'}, body: JSON.stringify({email: email, password: password})
     })
-    .then((req,response) => {
+    .then((response) => {
         if (!response.ok) {
             throw new Error('Incorrect email or password.');
           }
@@ -113,6 +111,8 @@ function validateLoginForm(){
     })
     .then(data => {
         localStorage.setItem("user", JSON.stringify(data));
+        const njkHTML = nunjuck.renderString("../views/homepage.njk", {data})
+        document.documentElement.innerHTML = njkHTML;
         document.getElementById("login").toggleAttribute("hidden",true);
     })
     .catch(error => {
@@ -129,12 +129,11 @@ function userLoged(){
 }
 function logout(){
     localStorage.removeItem("user");
-    document.getElementsByClassName("login-form-container").setAttribute("hidden","");
-    document.getElementsByClassName("register-form-container").toggleAttribute("hidden",true);
+    document.getElementsByClassName("login-form-container")[0].setAttribute("hidden","");
+    document.getElementsByClassName("register-form-container")[0].toggleAttribute("hidden",true);
 }
 
 function toggleLoginRegisterForm(){
-    document.getElementsByClassName("login-form-container").toggleAttribute("hidden");
-    document.getElementsByClassName("register-form-container").toggleAttribute("hidden");
-    document.documentElement.innerHTML = ""
+    document.getElementsByClassName("login-form-container")[0].toggleAttribute("hidden");
+    document.getElementsByClassName("register-form-container")[0].toggleAttribute("hidden");
 }

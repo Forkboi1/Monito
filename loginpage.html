@@ -41,15 +41,18 @@
                     <img src="content\brand.png" class="login-brand">
                 </div>
                 <div class="login-container">
+                    
                     <label for="username-email">Username or Email</label>
                     <input type="text" name="username-email" id="username-email">
 
                     <div class="space-between-fields"></div>
 
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="Logpassword">
+
                     <div><a href="" id ="forget-your-password">Forget your password?</a></div>
-                    <button id="login-button" onclick="">Log In</button>
+
+                    <button id="login-button" onclick="validateLoginForm()">Log In</button>
                     <div><p id="new-user-text">New user?</p></div>
                     <button id="toggle-form-button" onclick="toggleLoginRegisterForm()">Register</button>
                 </div>
@@ -71,7 +74,7 @@
                     <div class="space-between-fields"></div>
 
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="Regpassword">
 
                     <div class="space-between-fields"></div>
 
@@ -80,7 +83,7 @@
 
                     <button id="register-button">Register</button>
                     <p id="new-user-text">Already have an account?</p>
-                    <button id="toggle-form-button">Log In</button>
+                    <button id="toggle-form-button" onclick="toggleLoginRegisterForm()">Log In</button>
                 </div>
             </div>
         </div>

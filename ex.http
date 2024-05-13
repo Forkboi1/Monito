@@ -1,0 +1,8 @@
+POST https://swe363api.onrender.com/auth
+
+content-type: application/json
+
+{
+    "email": "user@example.com",
+    "password": "Ss300300@"
+}
