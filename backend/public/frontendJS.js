@@ -575,3 +575,9 @@ function loginButton(){
         })    
     }
 }
+function cartFunctionality(){
+    if(localStorage.getItem('user') == null){
+        window.location.href = "loginpage.html";
+       }
+       else{document.getElementById("login").style.display ="none";}
+}
