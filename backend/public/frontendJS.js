@@ -11,10 +11,6 @@
 //     document.documentElement.innerHTML = njkHTML
 // }
 function main() {   
-    if(localStorage.getItem('user') == null){
-        window.location.href = "loginpage.html";
-       }
-       else{document.getElementById("login").style.display ="none";} 
     let currency = document.getElementById("currencyBox")
     currency.selectedIndex = 0
     currency.addEventListener("change", change)
