@@ -73,7 +73,7 @@ document.getElementById('pay_button').addEventListener('click', function(event) 
         window.location.href = "thanks.html";
     }
 });
-async function validateRegisterForm(){
+async function validateRegisterForm() {
     apiUrl = "https://swe363api.onrender.com/register"
     
     let email = document.getElementById("email").value.trim();
@@ -404,22 +404,49 @@ const username = user.username;
    const password = document.getElementById("password_div")
    password.innerHTML+=`
    <input type="password" id="password" name="password" value=${user.password}>`
-   console.log(user._id)
-   apiUrl = "https://swe363api.onrender.com/users/"+user._id
-   fetch(apiUrl,{method: "GET", headers:{'Content-Type': 'application/json'}})
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('invalid');
-        }
-        return response.json();
-    })
-    .then(data => {
-       console.log(data)
-    })
-    .catch(error => {
-        // Alert the user if there's an error
-        alert(error.message);
-    });
-    
 }
+}
+function edit_user(){
+const userLocal = localStorage.getItem('user');
+const user = JSON.parse(userLocal).user;
+    const emailValue = document.getElementById('email').value;
+    const passwordValue = document.getElementById('password').value;
+    const usernameValue = document.getElementById('fName').value;
+    const token =  JSON.parse(userLocal).token;
+    fetch("https://swe363api.onrender.com/users/", {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'x-auth': token
+            },
+            body: JSON.stringify({
+                email: emailValue,
+                password: passwordValue,
+                username: usernameValue
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('invalid');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            // Alert the user if there's an error
+            alert(error.message);
+        });
+}
+function loginButton(){
+    if(localStorage.getItem('user') !== null){
+    document.getElementById("login").style.display ="none";
+    }
+    else{
+        lgn = document.getElementById("login");
+        lgn.addEventListener("click", function () {
+            window.location.href = "loginpage.html";
+        })    
+    }
 }
