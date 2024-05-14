@@ -53,7 +53,27 @@ function main() {
     })
 }
 
+function checkFormForPay() {
+    var emailInput = document.getElementById('emailPay');
+    var cardNumberInput = document.getElementById('carPay');
+    var nameOnCardInput = document.getElementById('namePay');
+    var cvvInput = document.getElementById('cvPay');
+    var expiryDateInput = document.getElementById('datePay');
 
+    if (!emailInput.value || !cardNumberInput.value || !nameOnCardInput.value || !cvvInput.value || !expiryDateInput.value) {
+        alert('Please fill out all required fields.');
+        return false; 
+    }
+    return true;
+}
+
+document.getElementById('pay_button').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    if (checkFormForPay()) {
+        window.location.href = "thanks.html";
+    }
+});
+async function validateRegisterForm(){
 async function validateRegisterForm() {
     apiUrl = "https://swe363api.onrender.com/register"
 

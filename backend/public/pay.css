@@ -56,9 +56,10 @@
 
 #or {
     text-align: center;
+    margin-bottom: 20px;
 }
 
-#input1 {
+.input1 {
     color: white;
     background-color: #003459;
     border: none;
