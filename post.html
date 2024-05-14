@@ -6,11 +6,11 @@
     <title>Post</title>
     <link href="post.css" rel="stylesheet">
     <link href="general_design.css" rel="stylesheet">
-    <script src="image_selector.js"></script>
+    <!-- <script src="image_selector.js"></script> -->
     <script src="post.js"></script>
     <script src="./backend/public/frontendJS.js"></script>
 </head>
-<body>
+<body onload="renderPost()">
     <div class="container">
     <!--Header code copy it to every page until the end of the header tag-->
 <header>
@@ -53,103 +53,36 @@
         <div id="post_info">
 
             <div id="post_desc">
-                <table>
-                    <caption><strong>Animal Info</strong></caption>
-                    <tr>
-                        <td>
-                            <strong>Name:</strong>Lemon
-                        </td>
-                        <td>
-                            <strong>Age:</strong>7 Months
-                        </td>
-                        <td>
-                            <strong>Gender:</strong>Male
-                        </td>
-                        <td>
-                            <strong>Height</strong>20cm
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>Species:</strong>Parrot
-                        </td>
-                        <td>
-                            <strong>Type:</strong>Cockatiel
-                        </td>
-                        <td>
-                            <strong>Mutation:</strong>Lutino
-                        </td>
-                        <td>
-                            <strong>Weight</strong>60g
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>Tame:</strong>Yes
-                        </td>
-                        <td>
-                            <strong>Clipped:</strong>No
-                        </td>
-                        <td colspan="2">
-                            <strong>Breeding Location:</strong>Saudi (Al Khobar)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <strong>SKU#:</strong>12454
-                        </td>
-                        <td style="font-size: 30px;" colspan="2">
-                            <strong>Price: 352 SAR</strong>
-                        </td>
-                    </tr>
-                </table>
+
             </div>
 
             <div id="post_card">
-                <p><strong>Animal Description:</strong></p>
-                <p id="desc">I run a bird farm, and this beautiful bird is one of it's children, I hope that the one that buys him can take care of him, he is a healthy boy that can sing and dance, he is kind and not akin to biting.</p>
-                <p><strong>Seller Rating: 4.2 ★★★★☆ (120)</strong></p>
-                <p><strong>Seller Location: Al khobar</strong></p>
-                <a href="">@AHMED123</a>
+
             </div>
         </div>
 
         
 
-        <div id="post_buttons">       
-            <button id="cart_button">Add to Cart</button>
-            <button id="wish_button">Add to WishList</button>
-            <form action="GET">
-                 <label for="quantity" style="font-weight: 800; margin-right: 8px;">Quantity</label>
-                 <input type="number" id="quantity" name="quantity" min="1" max="1" value="1"> 
-            </form>
-        </div>
-    </div>
-
-    <div id="comments">
-        <p style="font-size: 32px;"><strong>Comments (3)</strong></p>
-        <div id="comment_section">
-            <div class="comment">
-                <p class="bolded"><a href="">By: @Omar_H</a></p>
-                <p>This is a beautiful bird, I would love to take it if you include a cage with it.</p>
-                <p class="right_aligned bolded"> 14 Hours Ago</p>
-            </div>
-            <br>
-             <div class="comment">
-                <p><a href="" class="bolded author">By: @AHMED123 (Author)</a></p>
-                <p>If I sell every bird with a cage I wouldn't be in business. The price is fair and I wouldn't lower it any lower.</p>
-                <p class="right_aligned bolded"> 10 Hours Ago</p>
-            </div>
-            <div class="comment">
-                <p><a href="" class="bolded">By: @Typical_Qasimi</a></p>
-                <p>352 SAR!! RIDICULOUS! LUDICROUS! I would find the SAME bird at 100 SAR at the friday market. 150 SAR take it or leave it. </p>
-                <p class="right_aligned bolded"> 30 mins Ago</p>
+            <div id="post_buttons">       
+                <button id="cart_button">Add to Cart</button>
+                <form action="GET">
+                    <label for="quantity" style="font-weight: 800; margin-right: 8px;">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="1" value="1"> 
+                </form>
             </div>
         </div>
 
-        <p>End of Comments</p>
-        <p>1</p>
-    </div>
+        <div id="comments">
+            <p style="font-size: 32px;" id="commentCount"></p>
+            <div id="comment_section">
+
+            </div>
+
+            <div>
+                <input type="text" placeholder="Enter a new question"></input>
+                <button onclick="addComment()" id="cart_button">Post Comment</button>
+            </div>
+        </div>
 
     </div>
     <!--Footer code copy it to every page-->
