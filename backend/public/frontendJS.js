@@ -73,7 +73,6 @@ document.getElementById('pay_button').addEventListener('click', function(event) 
         window.location.href = "thanks.html";
     }
 });
-async function validateRegisterForm(){
 async function validateRegisterForm() {
     apiUrl = "https://swe363api.onrender.com/register"
 
@@ -556,8 +555,14 @@ const user = JSON.parse(userLocal).user;
             alert(error.message);
         });
 }
-function loginButtonHider(){
+function loginButton(){
     if(localStorage.getItem('user') !== null){
     document.getElementById("login").style.display ="none";
+    }
+    else{
+        lgn = document.getElementById("login");
+        lgn.addEventListener("click", function () {
+            window.location.href = "loginpage.html";
+        })    
     }
 }
