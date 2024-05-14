@@ -145,7 +145,7 @@ function toggleLoginRegisterForm(){
 }
 
 async function showPosts(){
-    apiUrl = "https://swe363api.onrender.com/posts"
+    apiUrl = "https://swe363api.onrender.com/post"
     if (localStorage.getItem("user")){
         document.getElementById("login").toggleAttribute("hidden",true);
     }
@@ -161,13 +161,16 @@ async function showPosts(){
           return response.json();
     })
     .then(data => {
-        for (let post in data){
+
+        data.posts.forEach(post => {
             if (post.postType === "pet"){
                 postPetInHomepage(post);
-            }else {
+            }else if(post.postType === "product") {
                 postProductInHomepage(post);
+            }else{
+                postPetInHomepage(post);
             }
-        }
+        })
     })
     .catch(error => {
         // Alert the user if there's an error
@@ -177,11 +180,13 @@ async function showPosts(){
 
 // render pet posts
 function postPetInHomepage(postData){
-    petBody = document.getElementsByClassName("pet_view")[0]
+    console.log()
+    petBody = document.getElementsByClassName("product_view")[0]
+    // renderPostFetch(postData._id, postData.userId)
     petBody.innerHTML +=`             
-            <a onclick="${renderPostFetch(postData._id, postData.userId)}">
+            <a href="./post.html?postId=${postData._id}&userId=${postData.userId}">
                 <div class="animal">
-                    <img src="content/${postData.photoUrls[0]}" alt="${postData.code} - ${postData.name}">
+                    <img src="${postData.photoUrls[0]}" alt="${postData.code} - ${postData.name}">
                     <table>
                         <tr>
                             <td><strong>${postData.code} - ${postData.name}</strong></td>
@@ -198,11 +203,11 @@ function postPetInHomepage(postData){
 }
 // render product posts
 function postProductInHomepage(postData){
-    productBody = document.getElementsByClassName("productBody_view")[0]
+    productBody = document.getElementsByClassName("product_view")[1]
     productBody.innerHTML +=`             
-            <a onclick="${renderPostFetch(postData._id, postData.userId)}">
+            <a href="./post.html?postId=${postData._id}&userId=${postData.userId}">
                 <div class="animal">
-                    <img src="content/${postData.photoUrls[0]}" alt="${postData.name}">
+                    <img src="${postData.photoUrls[0]}" alt="${postData.name}">
                     <table>
                         <tr>
                             <td><strong>${postData.name}</strong></td>
@@ -219,9 +224,9 @@ function postProductInHomepage(postData){
 }
 
 async function renderPostFetch(postId, userId){
-    window.location.href = "post.html"
+    window.location.href = ""
     apiUrlGetUserInfo = "https://swe363api.onrender.com/users/" + userId;
-    apiUrlGetPostInfo = "https://swe363api.onrender.com/posts/" + postId;
+    apiUrlGetPostInfo = "https://swe363api.onrender.com/post/" + postId;
     let post;
     let user;
 
