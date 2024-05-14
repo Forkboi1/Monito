@@ -166,6 +166,15 @@ function toggleLoginRegisterForm() {
 }
 
 async function showPosts() {
+    if(localStorage.getItem('user') !== null){
+        document.getElementById("login").style.display ="none";
+        }
+        else{
+            lgn = document.getElementById("login");
+            lgn.addEventListener("click", function () {
+                window.location.href = "loginpage.html";
+            })    
+        }
     apiUrl = "https://swe363api.onrender.com/post"
     if (localStorage.getItem("user")) {
         document.getElementById("login").toggleAttribute("hidden", true);
