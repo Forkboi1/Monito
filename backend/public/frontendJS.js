@@ -10,7 +10,7 @@
 //     const njkHTML = nunjuck.renderString("../views/loginpage.njk", {});
 //     document.documentElement.innerHTML = njkHTML
 // }
-function main() {    
+function main() {
     let currency = document.getElementById("currencyBox")
     currency.selectedIndex = 0
     currency.addEventListener("change", change)
@@ -54,136 +54,138 @@ function main() {
 }
 
 
-async function validateRegisterForm(){
+async function validateRegisterForm() {
     apiUrl = "https://swe363api.onrender.com/register"
-    
+
     let email = document.getElementById("email").value.trim();
     let password = document.getElementById("Regpassword").value.trim();
     let username = document.getElementById("username").value.trim();
     let verifyPassword = document.getElementById("verify-password").value.trim();
-    if (email === "" ||  password === "" || username === "" || verifyPassword === ""){
+    if (email === "" || password === "" || username === "" || verifyPassword === "") {
         alert("Please fill in all fields.");
         return;
-    } else if (password != verifyPassword){
+    } else if (password != verifyPassword) {
         alert("two password should be identical!!");
         return
     }
 
-    await fetch(apiUrl,{method: "POST", headers:{'Content-Type': 'application/json'}, 
-    body: JSON.stringify({email: email, password: password, username: username})
+    await fetch(apiUrl, {
+        method: "POST", headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, password: password, username: username })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('choose other email or password.');
-        }
-        return response.json();
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('choose other email or password.');
+            }
+            return response.json();
 
-    })
-    .then(data => {
-        localStorage.setItem("user", JSON.stringify(data));
-        document.getElementById("login").toggleAttribute("hidden",true);
-        window.location.href = "homepage.html"
-        // const njkHTML = renderString("../views/homepage.njk", {data})
-        // document.documentElement.innerHTML = njkHTML;
-    })
-    .catch(error => {
-        // Alert the user if there's an error
-        alert(error.message);
-    });
+        })
+        .then(data => {
+            localStorage.setItem("user", JSON.stringify(data));
+            document.getElementById("login").toggleAttribute("hidden", true);
+            window.location.href = "homepage.html"
+            // const njkHTML = renderString("../views/homepage.njk", {data})
+            // document.documentElement.innerHTML = njkHTML;
+        })
+        .catch(error => {
+            // Alert the user if there's an error
+            alert(error.message);
+        });
 
 }
 
-async function validateLoginForm(){
-    
+async function validateLoginForm() {
+
     apiUrl = "https://swe363api.onrender.com/auth"
 
     let email = document.getElementById("username-email").value.trim();
     let password = document.getElementById("Logpassword").value.trim();
-    if (email === "" ||  password === ""){
+    if (email === "" || password === "") {
         alert("Please fill in all fields.");
         return;
     }
 
-    await fetch(apiUrl,{method: "POST", headers: {"content-type": "application/json"}, body: JSON.stringify({email: email, password: password})
+    await fetch(apiUrl, {
+        method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ email: email, password: password })
     })
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error('Incorrect email or password.');
-          }
-          return response.json();
-    })
-    .then(data => {
-        localStorage.setItem("user", JSON.stringify(data));
-        // const njkHTML = renderString("../views/homepage.njk", {data})
-        // document.documentElement.innerHTML = njkHTML;
-        window.location.href = "homepage.html"
-        document.getElementById("login").toggleAttribute("hidden",true);
-    })
-    .catch(error => {
-        // Alert the user if there's an error
-        alert(error.message);
-      });
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Incorrect email or password.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            localStorage.setItem("user", JSON.stringify(data));
+            // const njkHTML = renderString("../views/homepage.njk", {data})
+            // document.documentElement.innerHTML = njkHTML;
+            window.location.href = "homepage.html"
+            document.getElementById("login").toggleAttribute("hidden", true);
+        })
+        .catch(error => {
+            // Alert the user if there's an error
+            alert(error.message);
+        });
 
 
 }
 
-function userLoged(){
+function userLoged() {
     const userInfo = localStorage.getItem("user")
-    if (userInfo != null){
-        document.getElementById("login").toggleAttribute("hidden",true);
+    if (userInfo != null) {
+        document.getElementById("login").toggleAttribute("hidden", true);
     }
 }
-function logout(){
+function logout() {
     localStorage.removeItem("user");
-    document.getElementsByClassName("login-form-container")[0].setAttribute("hidden","");
-    document.getElementsByClassName("register-form-container")[0].toggleAttribute("hidden",true);
+    document.getElementsByClassName("login-form-container")[0].setAttribute("hidden", "");
+    document.getElementsByClassName("register-form-container")[0].toggleAttribute("hidden", true);
 }
 
-function toggleLoginRegisterForm(){
+function toggleLoginRegisterForm() {
     document.getElementsByClassName("login-form-container")[0].toggleAttribute("hidden");
     document.getElementsByClassName("register-form-container")[0].toggleAttribute("hidden");
 }
 
-async function showPosts(){
+async function showPosts() {
     apiUrl = "https://swe363api.onrender.com/post"
-    if (localStorage.getItem("user")){
-        document.getElementById("login").toggleAttribute("hidden",true);
+    if (localStorage.getItem("user")) {
+        document.getElementById("login").toggleAttribute("hidden", true);
     }
 
-    await fetch(apiUrl,{
-        method: "GET", 
-        headers: {"content-type": "application/json"}
+    await fetch(apiUrl, {
+        method: "GET",
+        headers: { "content-type": "application/json" }
     })
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error("couldn't retrieve posts due to server");
-          }
-          return response.json();
-    })
-    .then(data => {
-
-        data.posts.forEach(post => {
-            if (post.postType === "pet"){
-                postPetInHomepage(post);
-            }else if(post.postType === "product") {
-                postProductInHomepage(post);
-            }else{
-                postPetInHomepage(post);
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("couldn't retrieve posts due to server");
             }
+            return response.json();
         })
-    })
-    .catch(error => {
-        // Alert the user if there's an error
-        alert(error.message);
-      });
+        .then(data => {
+
+            data.posts.forEach(post => {
+                if (post.postType === "pet") {
+                    postPetInHomepage(post);
+                } else if (post.postType === "product") {
+                    postProductInHomepage(post);
+                } else {
+                    postPetInHomepage(post);
+                }
+            })
+        })
+        .catch(error => {
+            // Alert the user if there's an error
+            alert(error.message);
+        });
 }
 
 // render pet posts
-function postPetInHomepage(postData){
+function postPetInHomepage(postData) {
     console.log()
     petBody = document.getElementsByClassName("product_view")[0]
     // renderPostFetch(postData._id, postData.userId)
-    petBody.innerHTML +=`             
+    petBody.innerHTML += `             
             <a href="./post.html?postId=${postData._id}&userId=${postData.userId}">
                 <div class="animal">
                     <img src="${postData.photoUrls[0]}" alt="${postData.code} - ${postData.name}">
@@ -202,9 +204,9 @@ function postPetInHomepage(postData){
             </a>`
 }
 // render product posts
-function postProductInHomepage(postData){
+function postProductInHomepage(postData) {
     productBody = document.getElementsByClassName("product_view")[1]
-    productBody.innerHTML +=`             
+    productBody.innerHTML += `             
             <a href="./post.html?postId=${postData._id}&userId=${postData.userId}">
                 <div class="animal">
                     <img src="${postData.photoUrls[0]}" alt="${postData.name}">
@@ -223,55 +225,55 @@ function postProductInHomepage(postData){
             </a>`
 }
 
-async function renderPostFetch(postId, userId){
+async function renderPostFetch(postId, userId) {
     window.location.href = ""
     apiUrlGetUserInfo = "https://swe363api.onrender.com/users/" + userId;
     apiUrlGetPostInfo = "https://swe363api.onrender.com/post/" + postId;
     let post;
     let user;
 
-    await fetch(apiUrlGetPostInfo,{
-        method: "GET", 
-        headers: {"content-type": "application/json"}
+    await fetch(apiUrlGetPostInfo, {
+        method: "GET",
+        headers: { "content-type": "application/json" }
     })
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error("couldn't retrieve posts due to server");
-          }
-          return response.json();
-    })
-    .then(data => {
-        post = data
-    })
-    .catch(error => {
-        // Alert the user if there's an error
-        alert(error.message);
-      });
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("couldn't retrieve posts due to server");
+            }
+            return response.json();
+        })
+        .then(data => {
+            post = data
+        })
+        .catch(error => {
+            // Alert the user if there's an error
+            alert(error.message);
+        });
 
-    await fetch(apiUrlGetUserInfo,{
-        method: "GET", 
-        headers: {"content-type": "application/json"}
+    await fetch(apiUrlGetUserInfo, {
+        method: "GET",
+        headers: { "content-type": "application/json" }
     })
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error("couldn't retrieve posts due to server");
-          }
-          return response.json();
-    })
-    .then(data => {
-        user = data
-    })
-    .catch(error => {
-        // Alert the user if there's an error
-        alert(error.message);
-      });
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("couldn't retrieve posts due to server");
+            }
+            return response.json();
+        })
+        .then(data => {
+            user = data
+        })
+        .catch(error => {
+            // Alert the user if there's an error
+            alert(error.message);
+        });
 
-      renderPostFetch(post);
-      renderUserInfo(user, post);
-      renderCommentsSection(user, post.comments);
+    renderPostFetch(post);
+    renderUserInfo(user, post);
+    renderCommentsSection(user, post.comments);
 }
 
-function renderPostInfo(post){
+function renderPostInfo(post) {
     let postCard = document.getElementById("post_desc");
     let postButtons = document.getElementById("post_buttons");
 
@@ -336,7 +338,7 @@ function renderPostInfo(post){
 
 }
 
-function renderUserInfo(user, post){
+function renderUserInfo(user, post) {
     let userCard = document.getElementById("post_card");
     userCard.innerHTML = `<p><strong>Animal Description:</strong></p>
     <p id="desc">${post.description}</p>
@@ -345,11 +347,11 @@ function renderUserInfo(user, post){
     <a href="">@${user.username}</a>`
 }
 
-function displayRatingStars(ratingList){
+function displayRatingStars(ratingList) {
 
 }
 
-function renderCommentsSection(user, comments){
+function renderCommentsSection(user, comments) {
     let commentSection = document.getElementById("comment_section");
     comments.forEach(comment => {
         commentSection.innerHTML += `<div class="comment">
