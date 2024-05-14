@@ -180,11 +180,9 @@ async function showPosts(){
 
 // render pet posts
 function postPetInHomepage(postData){
-    console.log()
     petBody = document.getElementsByClassName("product_view")[0]
-    // renderPostFetch(postData._id, postData.userId)
     petBody.innerHTML +=`             
-            <a href="./post.html?postId=${postData._id}&userId=${postData.userId}">
+            <a href="./post.html?${postData._id}&${postData.userId}">
                 <div class="animal">
                     <img src="${postData.photoUrls[0]}" alt="${postData.code} - ${postData.name}">
                     <table>
@@ -205,7 +203,7 @@ function postPetInHomepage(postData){
 function postProductInHomepage(postData){
     productBody = document.getElementsByClassName("product_view")[1]
     productBody.innerHTML +=`             
-            <a href="./post.html?postId=${postData._id}&userId=${postData.userId}">
+            <a href="./post.html?${postData._id}&${postData.userId}">
                 <div class="animal">
                     <img src="${postData.photoUrls[0]}" alt="${postData.name}">
                     <table>
@@ -223,12 +221,30 @@ function postProductInHomepage(postData){
             </a>`
 }
 
-async function renderPostFetch(postId, userId){
-    window.location.href = ""
+function renderPost(){
+    // Get the current URL
+    const currentUrl = window.location.href;
+
+    // Split the URL by '?' to separate the base URL from the query parameters
+    const urlParts = currentUrl.split('?');
+
+    // Extract the query parameters part
+    const queryParams = urlParts[1];
+
+    // Split the query parameters by '&' to separate individual parameters
+    const paramPairs = queryParams.split('&');
+
+    // Extract the two IDs
+    const postId = paramPairs[0];
+    const userId = paramPairs[1];
+    postFetch(postId,userId);
+    return postId
+}
+let post = "";
+let user = "";
+async function postFetch(postId, userId){
     apiUrlGetUserInfo = "https://swe363api.onrender.com/users/" + userId;
     apiUrlGetPostInfo = "https://swe363api.onrender.com/post/" + postId;
-    let post;
-    let user;
 
     await fetch(apiUrlGetPostInfo,{
         method: "GET", 
@@ -241,7 +257,7 @@ async function renderPostFetch(postId, userId){
           return response.json();
     })
     .then(data => {
-        post = data
+        post = data.post
     })
     .catch(error => {
         // Alert the user if there's an error
@@ -259,14 +275,14 @@ async function renderPostFetch(postId, userId){
           return response.json();
     })
     .then(data => {
-        user = data
+        user = data.user
     })
     .catch(error => {
         // Alert the user if there's an error
         alert(error.message);
       });
 
-      renderPostFetch(post);
+      renderPostInfo(post);
       renderUserInfo(user, post);
       renderCommentsSection(user, post.comments);
 }
@@ -274,7 +290,6 @@ async function renderPostFetch(postId, userId){
 function renderPostInfo(post){
     let postCard = document.getElementById("post_desc");
     let postButtons = document.getElementById("post_buttons");
-
     postCard.innerHTML = `<table>
     <caption><strong>Animal Info</strong></caption>
     <tr>
@@ -327,8 +342,7 @@ function renderPostInfo(post){
 </table>`;
 
     postButtons.innerHTML = `
-    <button id="cart_button">Add to Cart</button>
-    <button id="wish_button">Add to WishList</button>
+    <button id="cart_button" onclick="addToCart()">Add to Cart</button>
     <form action="GET">
          <label for="quantity" style="font-weight: 800; margin-right: 8px;">Quantity</label>
          <input type="number" id="quantity" name="quantity" min="0" max="1" value="1"> 
@@ -336,26 +350,125 @@ function renderPostInfo(post){
 
 }
 
+async function addToCart(){
+    if (!localStorage.getItem("user")){
+        return
+    }
+    let postId = renderPost();
+    apiUrl = "https://swe363api.onrender.com/cart";
+
+    await fetch(apiUrlGetUserInfo,{
+        method: "POST", 
+        headers: {"content-type": "application/json", "x-auth":JSON.parse(localStorage.getItem("user")).token},
+        body: {post}
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("couldn't retrieve posts due to server");
+          }
+          return response.json();
+    })
+    .then(data => {
+        user = data.user
+    })
+    .catch(error => {
+        // Alert the user if there's an error
+        alert(error.message);
+      });
+}
+
 function renderUserInfo(user, post){
     let userCard = document.getElementById("post_card");
     userCard.innerHTML = `<p><strong>Animal Description:</strong></p>
     <p id="desc">${post.description}</p>
-    <p><strong>Seller Rating: ${displayRatingStars(user.rate)}</strong></p>
-    <p><strong>Seller Location: ${user.userLocation.split(",")[1]}</strong></p>
+    <p><strong>Seller Rating: ${displayRatingStars(user.rating)}</strong></p>
+    <p><strong>Seller Location: ${user.userLocation}</strong></p>
     <a href="">@${user.username}</a>`
 }
 
-function displayRatingStars(ratingList){
 
+function displayRatingStars(ratingList) {
+    // Calculate the average rating
+    const totalRatings = ratingList.length;
+    const averageRating = ratingList.reduce((acc, curr) => acc + curr, 0) / totalRatings;
+
+    // Convert the average rating to a string with one decimal place
+    const formattedAverageRating = averageRating.toFixed(1);
+
+    // Calculate the number of full stars (rounded down) and half star (if applicable)
+    const fullStars = Math.floor(averageRating);
+    const hasHalfStar = averageRating % 1 !== 0;
+
+    // Generate the star rating string
+    let starRatingString = formattedAverageRating + ' ';
+    starRatingString += '★'.repeat(fullStars); // Add full stars
+    if (hasHalfStar) {
+        starRatingString += '☆'; // Add half star
+    }
+    starRatingString += ' (' + totalRatings + ')'; // Add number of ratings
+
+    return starRatingString;
 }
 
+function dateDiffInDays(date1, date2 = new Date()) {
+    // Convert both dates to milliseconds
+    const date1Ms = date1.getTime();
+    const date2Ms = date2.getTime();
+
+    // Calculate the difference in milliseconds
+    const differenceMs = Math.abs(date2Ms - date1Ms);
+
+    // Convert the difference to days
+    const differenceDays = Math.ceil(differenceMs / (1000 * 60 * 60 * 24));
+
+    return differenceDays;
+}
+
+
 function renderCommentsSection(user, comments){
+    let commentHeader = document.getElementById("commentCount");
+    commentHeader.innerHTML = `<strong>Comments (${comments.length})</strong>`
     let commentSection = document.getElementById("comment_section");
+    commentSection.innerHTML = ""
     comments.forEach(comment => {
+        let authorSig = ""
+        if (comment.username === user.username){
+            authorSig = "author"
+        }
         commentSection.innerHTML += `<div class="comment">
-        <p><a href="" class="bolded">By: @${comment.username}</a></p>
+        <p><a href="" class="bolded ${authorSig}">By: @${comment.username}</a></p>
         <p>${comment.text}</p>
         <p class="right_aligned bolded"> ${comment.addedAt}</p>
-    </div>`
+    </div><br>`
     });
+}
+
+async function addComment(){
+    const commentText = document.getElementById("btnNewQuestion").value.trim();
+    let postId = renderPost();
+    apiUrl = "https://swe363api.onrender.com/comment/" + postId;
+    if (!localStorage.getItem("user")){
+        return
+    }
+
+
+    await fetch(apiUrl,{
+        method: "POST", 
+        headers: {"content-type": "application/json",
+         "x-auth": JSON.parse(localStorage.getItem("user")).token},
+         body: JSON.stringify({text: commentText})
+    })
+    .then((response) => {
+        console.log(response.status);
+        console.log(response.ok);
+        if (!response.ok) {
+            throw new Error("couldn't retrieve posts due to server");
+          }
+          return response.json();
+    })
+    .catch(error => {
+        // Alert the user if there's an error
+        alert(error.message);
+      });
+
 }
