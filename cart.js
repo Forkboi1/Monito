@@ -1,4 +1,3 @@
-window.onload = main
 
 async function main() {
     let currency = document.getElementById("currencyBox")
@@ -23,10 +22,10 @@ async function main() {
     }
     productSection = document.getElementById("products")
     cartPosts = []
-
+    console.log(JSON.parse(localStorage.getItem("user")).token)
     await fetch("https://swe363api.onrender.com/cart", {
         method: "GET",
-        headers: { "content-type": "application/json", "x-auth": localStorage.getItem("user").token }
+        headers: { "content-type": "application/json", "x-auth": JSON.parse(localStorage.getItem("user")).token }
     }).then(response => response.json()).then(data => { cartPosts = data; });
 
     if (cartPosts.length > 0) {
