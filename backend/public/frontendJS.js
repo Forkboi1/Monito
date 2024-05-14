@@ -423,3 +423,8 @@ const user = JSON.parse(userLocal).user;
             alert(error.message);
         });
 }
+function loginButtonHider(){
+    if(localStorage.getItem('user') !== null){
+    document.getElementById("login").style.display ="none";
+    }
+}
