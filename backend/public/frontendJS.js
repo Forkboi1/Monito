@@ -73,7 +73,6 @@ document.getElementById('pay_button').addEventListener('click', function(event) 
         window.location.href = "thanks.html";
     }
 });
-async function validateRegisterForm(){
 async function validateRegisterForm() {
     apiUrl = "https://swe363api.onrender.com/register"
 
