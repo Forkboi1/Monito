@@ -423,8 +423,14 @@ const user = JSON.parse(userLocal).user;
             alert(error.message);
         });
 }
-function loginButtonHider(){
+function loginButton(){
     if(localStorage.getItem('user') !== null){
     document.getElementById("login").style.display ="none";
+    }
+    else{
+        lgn = document.getElementById("login");
+        lgn.addEventListener("click", function () {
+            window.location.href = "loginpage.html";
+        })    
     }
 }
