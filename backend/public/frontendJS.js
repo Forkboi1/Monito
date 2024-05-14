@@ -10,7 +10,7 @@
 //     const njkHTML = nunjuck.renderString("../views/loginpage.njk", {});
 //     document.documentElement.innerHTML = njkHTML
 // }
-function main() {    
+function main() {   
     let currency = document.getElementById("currencyBox")
     currency.selectedIndex = 0
     currency.addEventListener("change", change)
