@@ -387,10 +387,10 @@ async function addToCart(){
     let postId = renderPost();
     apiUrl = "https://swe363api.onrender.com/cart";
 
-    await fetch(apiUrlGetUserInfo,{
+    await fetch(apiUrl,{
         method: "POST", 
         headers: {"content-type": "application/json", "x-auth":JSON.parse(localStorage.getItem("user")).token},
-        body: {post}
+        body: JSON.stringify({post})
     })
     .then((response) => {
         if (!response.ok) {
@@ -475,31 +475,39 @@ function renderCommentsSection(user, comments){
 
 async function addComment(){
     const commentText = document.getElementById("btnNewQuestion").value.trim();
-    let postId = renderPost();
-    apiUrl = "https://swe363api.onrender.com/comment/" + postId;
-    if (!localStorage.getItem("user")){
-        return
+    const postId = renderPost();
+    const apiUrl = "https://swe363api.onrender.com/comment/" + postId;
+    
+    // Check if a user is logged in
+    if (!localStorage.getItem("user")) {
+        alert("Please log in to post a comment.");
+        return;
     }
 
-
-    await fetch(apiUrl,{
-        method: "POST", 
-        headers: {"content-type": "application/json",
-         "x-auth": JSON.parse(localStorage.getItem("user")).token},
-         body: JSON.stringify({text: commentText})
-    })
-    .then((response) => {
-        console.log(response.status);
-        console.log(response.ok);
+    const token = JSON.parse(localStorage.getItem("user")) + ""
+    try {
+        const response = await fetch(apiUrl, {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json",
+                "x-auth": token
+            },
+            body: JSON.stringify({ text: commentText })
+        });
+    
+        // Check if the request was successful
         if (!response.ok) {
-            throw new Error("couldn't retrieve posts due to server");
-          }
-          return response.json();
-    })
-    .catch(error => {
-        // Alert the user if there's an error
-        alert(error.message);
-      });
+            throw new Error("Failed to post comment. Server responded with status: " + response.status);
+        }
+    
+        const data = await response.json();
+        console.log("Comment posted successfully:", data);
+    } catch (error) {
+        // Log detailed error message to console
+        console.error("Error posting comment:", error);
+        // Alert the user with a generic error message
+        alert("An error occurred while posting your comment. Please try again later.");
+    }
 
 }
 function personal_page(){
