@@ -1,8 +1,8 @@
-POST https://swe363api.onrender.com/auth
+POST https://swe363api.onrender.com/register HTTP/1.1
 
-content-type: application/json
 
 {
-    "email": "user@example.com",
-    "password": "Ss300300@"
+    "email": "as@example.com",
+    "password": "Ss300300@",
+    "username": "as"
 }

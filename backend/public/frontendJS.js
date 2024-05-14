@@ -1,5 +1,5 @@
-// import { renderString } from "../node_modules/nunjucks";
-
+// const nunjucks = require('nunjucks');
+// nunjucks.configure('../views');
 // document.getElementById("login-button").addEventListener("click",validateLoginForm)
 // document.getElementById("register-button").addEventListener("click",validateRegisterForm)
 // document.getElementById("logout-button").addEventListener("click",logout)
@@ -56,6 +56,7 @@ function main() {
 
 async function validateRegisterForm(){
     apiUrl = "https://swe363api.onrender.com/register"
+    
     let email = document.getElementById("email").value.trim();
     let password = document.getElementById("Regpassword").value.trim();
     let username = document.getElementById("username").value.trim();
@@ -63,7 +64,7 @@ async function validateRegisterForm(){
     if (email === "" ||  password === "" || username === "" || verifyPassword === ""){
         alert("Please fill in all fields.");
         return;
-    } else if (password === verifyPassword){
+    } else if (password != verifyPassword){
         alert("two password should be identical!!");
         return
     }
@@ -80,9 +81,10 @@ async function validateRegisterForm(){
     })
     .then(data => {
         localStorage.setItem("user", JSON.stringify(data));
-        const njkHTML = renderString("../views/homepage.njk", {data})
-        document.documentElement.innerHTML = njkHTML;
         document.getElementById("login").toggleAttribute("hidden",true);
+        window.location.href = "homepage.html"
+        // const njkHTML = renderString("../views/homepage.njk", {data})
+        // document.documentElement.innerHTML = njkHTML;
     })
     .catch(error => {
         // Alert the user if there's an error
@@ -93,69 +95,36 @@ async function validateRegisterForm(){
 
 async function validateLoginForm(){
     
-    // apiUrl = "https://swe363api.onrender.com/auth"
+    apiUrl = "https://swe363api.onrender.com/auth"
 
-    // let email = document.getElementById("username-email").value.trim();
-    // let password = document.getElementById("Logpassword").value.trim();
-    // if (email === "" ||  password === ""){
-    //     alert("Please fill in all fields.");
-    //     return;
-    // }
-
-    // await fetch(apiUrl,{method: "POST", body: JSON.stringify({email: email, password: password})
-    // })
-    // .then((response) => {
-    //     if (!response.ok) {
-    //         throw new Error('Incorrect email or password.');
-    //       }
-    //       return response.json();
-    // })
-    // .then(data => {
-    //     localStorage.setItem("user", JSON.stringify(data));
-    //     // const njkHTML = renderString("../views/homepage.njk", {data})
-    //     // document.documentElement.innerHTML = njkHTML;
-    //     window.location.href = "homepage.html"
-    //     document.getElementById("login").toggleAttribute("hidden",true);
-    // })
-    // .catch(error => {
-    //     // Alert the user if there's an error
-    //     alert(error.message);
-    //   });
-
-
-    const apiUrl = "https://swe363api.onrender.com/auth";
-    const email = document.getElementById("username-email").value.trim();
-    const password = document.getElementById("Logpassword").value.trim();
-
-    if (email === "" || password === "") {
+    let email = document.getElementById("username-email").value.trim();
+    let password = document.getElementById("Logpassword").value.trim();
+    if (email === "" ||  password === ""){
         alert("Please fill in all fields.");
         return;
     }
-    req = new Request("http://localhost:3000/question", {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-        headers: {
-            "Content-Type": "application/json; charset=utf-8",
-        },
-    })
-    
-    try {
-        // const response = await fetch(apiUrl, {
-        //     method: "POST",
-        //     body: JSON.stringify({ email, password })
-        // });
 
-        const response = await fetch(req);
+    await fetch(apiUrl,{method: "POST", headers: {"content-type": "application/json"}, body: JSON.stringify({email: email, password: password})
+    })
+    .then((response) => {
         if (!response.ok) {
             throw new Error('Incorrect email or password.');
-        }
-
-        const data = await response.json();
+          }
+          return response.json();
+    })
+    .then(data => {
         localStorage.setItem("user", JSON.stringify(data));
-        window.location.href = "homepage.html";
-    } catch (error) {
+        // const njkHTML = renderString("../views/homepage.njk", {data})
+        // document.documentElement.innerHTML = njkHTML;
+        window.location.href = "homepage.html"
+        document.getElementById("login").toggleAttribute("hidden",true);
+    })
+    .catch(error => {
+        // Alert the user if there's an error
         alert(error.message);
-    }
+      });
+
+
 }
 
 function userLoged(){
@@ -173,4 +142,215 @@ function logout(){
 function toggleLoginRegisterForm(){
     document.getElementsByClassName("login-form-container")[0].toggleAttribute("hidden");
     document.getElementsByClassName("register-form-container")[0].toggleAttribute("hidden");
+}
+
+async function showPosts(){
+    apiUrl = "https://swe363api.onrender.com/posts"
+    if (localStorage.getItem("user")){
+        document.getElementById("login").toggleAttribute("hidden",true);
+    }
+
+    await fetch(apiUrl,{
+        method: "GET", 
+        headers: {"content-type": "application/json"}
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("couldn't retrieve posts due to server");
+          }
+          return response.json();
+    })
+    .then(data => {
+        for (let post in data){
+            if (post.postType === "pet"){
+                postPetInHomepage(post);
+            }else {
+                postProductInHomepage(post);
+            }
+        }
+    })
+    .catch(error => {
+        // Alert the user if there's an error
+        alert(error.message);
+      });
+}
+
+// render pet posts
+function postPetInHomepage(postData){
+    petBody = document.getElementsByClassName("pet_view")[0]
+    petBody.innerHTML +=`             
+            <a onclick="${renderPostFetch(postData._id, postData.userId)}">
+                <div class="animal">
+                    <img src="content/${postData.photoUrls[0]}" alt="${postData.code} - ${postData.name}">
+                    <table>
+                        <tr>
+                            <td><strong>${postData.code} - ${postData.name}</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Gene: ${postData.gender} # Age:${postData.age} Months</td>
+                        </tr>
+                        <tr>
+                            <td><strong>${postData.price} SAR</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </a>`
+}
+// render product posts
+function postProductInHomepage(postData){
+    productBody = document.getElementsByClassName("productBody_view")[0]
+    productBody.innerHTML +=`             
+            <a onclick="${renderPostFetch(postData._id, postData.userId)}">
+                <div class="animal">
+                    <img src="content/${postData.photoUrls[0]}" alt="${postData.name}">
+                    <table>
+                        <tr>
+                            <td><strong>${postData.name}</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Gene: ${postData.type} # Size: ${postData.weight}kg</td>
+                        </tr>
+                        <tr>
+                            <td><strong>${postData.price} SAR</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </a>`
+}
+
+async function renderPostFetch(postId, userId){
+    window.location.href = "post.html"
+    apiUrlGetUserInfo = "https://swe363api.onrender.com/users/" + userId;
+    apiUrlGetPostInfo = "https://swe363api.onrender.com/posts/" + postId;
+    let post;
+    let user;
+
+    await fetch(apiUrlGetPostInfo,{
+        method: "GET", 
+        headers: {"content-type": "application/json"}
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("couldn't retrieve posts due to server");
+          }
+          return response.json();
+    })
+    .then(data => {
+        post = data
+    })
+    .catch(error => {
+        // Alert the user if there's an error
+        alert(error.message);
+      });
+
+    await fetch(apiUrlGetUserInfo,{
+        method: "GET", 
+        headers: {"content-type": "application/json"}
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("couldn't retrieve posts due to server");
+          }
+          return response.json();
+    })
+    .then(data => {
+        user = data
+    })
+    .catch(error => {
+        // Alert the user if there's an error
+        alert(error.message);
+      });
+
+      renderPostFetch(post);
+      renderUserInfo(user, post);
+      renderCommentsSection(user, post.comments);
+}
+
+function renderPostInfo(post){
+    let postCard = document.getElementById("post_desc");
+    let postButtons = document.getElementById("post_buttons");
+
+    postCard.innerHTML = `<table>
+    <caption><strong>Animal Info</strong></caption>
+    <tr>
+        <td>
+            <strong>Name:</strong>${post.name}
+        </td>
+        <td>
+            <strong>Age:</strong>${post.age} Months
+        </td>
+        <td>
+            <strong>Gender:</strong>${post.gender}
+        </td>
+        <td>
+            <strong>Height</strong>${post.height}cm
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Species:</strong>${post.species}
+        </td>
+        <td>
+            <strong>Type:</strong>${post.type}
+        </td>
+        <td>
+            <strong>Mutation:</strong>${post.mutation}
+        </td>
+        <td>
+            <strong>Weight</strong>${post.weight}Kg
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Tame:</strong>${post.tame}
+        </td>
+        <td>
+            <strong>Clipped:</strong>${post.clipped}
+        </td>
+        <td colspan="2">
+            <strong>Breeding Location:</strong>${post.breedingLocation}
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <strong>code:</strong>${post.code}
+        </td>
+        <td style="font-size: 30px;" colspan="2">
+            <strong>Price: ${post.price} SAR</strong>
+        </td>
+    </tr>
+</table>`;
+
+    postButtons.innerHTML = `
+    <button id="cart_button">Add to Cart</button>
+    <button id="wish_button">Add to WishList</button>
+    <form action="GET">
+         <label for="quantity" style="font-weight: 800; margin-right: 8px;">Quantity</label>
+         <input type="number" id="quantity" name="quantity" min="0" max="1" value="1"> 
+    </form>`;
+
+}
+
+function renderUserInfo(user, post){
+    let userCard = document.getElementById("post_card");
+    userCard.innerHTML = `<p><strong>Animal Description:</strong></p>
+    <p id="desc">${post.description}</p>
+    <p><strong>Seller Rating: ${displayRatingStars(user.rate)}</strong></p>
+    <p><strong>Seller Location: ${user.userLocation.split(",")[1]}</strong></p>
+    <a href="">@${user.username}</a>`
+}
+
+function displayRatingStars(ratingList){
+
+}
+
+function renderCommentsSection(user, comments){
+    let commentSection = document.getElementById("comment_section");
+    comments.forEach(comment => {
+        commentSection.innerHTML += `<div class="comment">
+        <p><a href="" class="bolded">By: @${comment.username}</a></p>
+        <p>${comment.text}</p>
+        <p class="right_aligned bolded"> ${comment.addedAt}</p>
+    </div>`
+    });
 }

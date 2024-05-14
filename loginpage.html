@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <link rel="stylesheet" href="general_design.css">
-    <link rel="stylesheet" href="loginpage.css">
+    <link rel="stylesheet" href="./backend/public/loginpage.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="header.css">
     <script src="./backend/public/frontendJS.js"></script>
@@ -36,6 +36,7 @@
                     <button id="login">Login</button>
                 </div>   
             </header>
+
             <div class="login-form-container">
                 <div>
                     <img src="content\brand.png" class="login-brand">
@@ -62,7 +63,7 @@
                 <div>
                     <img src="content\brand.png" class="login-brand">
                 </div>
-                <div class="register-container">
+                <div class="login-container">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username">
 
@@ -81,7 +82,7 @@
                     <label for="verify-password">Verify Password</label>
                     <input type="password" name="verify-password" id="verify-password">
 
-                    <button id="register-button">Register</button>
+                    <button id="register-button" onclick="validateRegisterForm()">Register</button>
                     <p id="new-user-text">Already have an account?</p>
                     <button id="toggle-form-button" onclick="toggleLoginRegisterForm()">Log In</button>
                 </div>

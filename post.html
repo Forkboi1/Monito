@@ -8,6 +8,7 @@
     <link href="general_design.css" rel="stylesheet">
     <script src="image_selector.js"></script>
     <script src="post.js"></script>
+    <script src="./backend/public/frontendJS.js"></script>
 </head>
 <body>
     <div class="container">
@@ -110,7 +111,6 @@
                 <p><strong>Seller Rating: 4.2 ★★★★☆ (120)</strong></p>
                 <p><strong>Seller Location: Al khobar</strong></p>
                 <a href="">@AHMED123</a>
-                
             </div>
         </div>
 
@@ -128,21 +128,23 @@
 
     <div id="comments">
         <p style="font-size: 32px;"><strong>Comments (3)</strong></p>
-        <div class="comment">
-            <p class="bolded"><a href="">By: @Omar_H</a></p>
-            <p>This is a beautiful bird, I would love to take it if you include a cage with it.</p>
-            <p class="right_aligned bolded"> 14 Hours Ago</p>
-        </div>
-         <div class="comment">
-            <p><a href="" class="bolded author">By: @AHMED123 (Author)</a></p>
-            <p>If I sell every bird with a cage I wouldn't be in business. The price is fair and I wouldn't lower it any lower.</p>
-            <p class="right_aligned bolded"> 10 Hours Ago</p>
-        </div>
-
-        <div class="comment">
-            <p><a href="" class="bolded">By: @Typical_Qasimi</a></p>
-            <p>352 SAR!! RIDICULOUS! LUDICROUS! I would find the SAME bird at 100 SAR at the friday market. 150 SAR take it or leave it. </p>
-            <p class="right_aligned bolded"> 30 mins Ago</p>
+        <div id="comment_section">
+            <div class="comment">
+                <p class="bolded"><a href="">By: @Omar_H</a></p>
+                <p>This is a beautiful bird, I would love to take it if you include a cage with it.</p>
+                <p class="right_aligned bolded"> 14 Hours Ago</p>
+            </div>
+            <br>
+             <div class="comment">
+                <p><a href="" class="bolded author">By: @AHMED123 (Author)</a></p>
+                <p>If I sell every bird with a cage I wouldn't be in business. The price is fair and I wouldn't lower it any lower.</p>
+                <p class="right_aligned bolded"> 10 Hours Ago</p>
+            </div>
+            <div class="comment">
+                <p><a href="" class="bolded">By: @Typical_Qasimi</a></p>
+                <p>352 SAR!! RIDICULOUS! LUDICROUS! I would find the SAME bird at 100 SAR at the friday market. 150 SAR take it or leave it. </p>
+                <p class="right_aligned bolded"> 30 mins Ago</p>
+            </div>
         </div>
 
         <p>End of Comments</p>
