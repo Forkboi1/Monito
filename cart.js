@@ -1,6 +1,6 @@
 window.onload = main
 
-function main() {
+async function main() {
     let currency = document.getElementById("currencyBox")
     currency.selectedIndex = 0
     currency.addEventListener("change", change)
@@ -21,6 +21,29 @@ function main() {
         }
 
     }
+    productSection = document.getElementById("products")
+    cartPosts = []
+
+    await fetch("https://swe363api.onrender.com/cart", {
+        method: "GET",
+        headers: { "content-type": "application/json", "x-auth": localStorage.getItem("user").token }
+    }).then(response => response.json()).then(data => { cartPosts = data; });
+
+    if (cartPosts.length > 0) {
+        console.log(cartPosts)
+        cartPosts.forEach(post => {
+            productSection.innerHTML += `<div class ="product"><img src="${post.photoUrls[0]}" alt="">
+                <div>
+                    <p class="bolded_p">${post.title}</p>
+                    <p class="description">${post.description}</p>
+                </div>
+                <input class ="number_of_items" type ="number" min="1" max="1" value="1">
+                <p class="price">${post.price} SAR</p>
+                <img class="delete" src="content/delete.png" alt="delete"></div>`
+        });
+    }
+
+
 
     to_pay = document.getElementById("pay")
 

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="header.css" rel="stylesheet" >
+    <link href="general_design.css" rel="stylesheet">
+    <link href="homepage.css" rel="stylesheet">
+    <link href="footer.css" rel="stylesheet">
+    <link href="createPost.css" rel="stylesheet">
+    <script src="./backend/public/frontendJS.js"></script>
+</head>
+  <body>
+    <div class="Container">
+        <header>
+            <img src="content/brand.png" alt="brand" id="brand">
+            <div id="links">
+                <a href="homepage.html" class="header_link">Home</a>
+                <a href="personal_page.html" class="header_link">Profile</a>
+                <a href="about.html" class="header_link">About</a>
+                <a href="contact.html" class="header_link">Contact</a>
+            </div>
+            <a href="cart.html"><img src="content/shopping-cart.png" alt="" id="cart_pic"></a>
+            <form action="POST" id="search_form">
+            <input type="search" name="s" id="search" placeholder="Search something here!">
+            </form>
+                <img src="content/sa.png" alt="flag" class="currency" id=curimg>
+                <select name="curr" id="currencyBox">
+                <option value="SAR" selected>SAR</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="JPY">JPY</option>
+                </select>
+            <div id="buttons">
+                <button id="createPost">Create Post</button>
+                <button id="login">Login</button>
+            </div>   
+    </header>
+
+    <h1>Create a New Post</h1>
+    <div id="post_form">
+    <form action="/create-post" method="POST" id="form_post">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+        <label for="postType">Post Type:</label><br>
+        <select id="postType" name="postType"">
+            <option value="pet">Pet</option>
+            <option value="product">Product</option>
+        </select><br>
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price"><br>
+        <label for="quantity">Quantity:</label><br>
+        <input type="number" id="quantity" name="quantity"><br>
+        <label for="photoUrls">Photo URLs:</label><br>
+        <input type="text" id="photoUrls" name="photoUrls"><br>
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age"><br>
+
+        <label for="gender">Gender:</label><br>
+        <input type="text" id="gender" name="gender"><br>
+
+        <label for="height">Height:</label><br>
+        <input type="number" id="height" name="height"><br>
+
+        <label for="species">Species:</label><br>
+        <input type="text" id="species" name="species"><br>
+
+        <label for="type">Type:</label><br>
+        <input type="text" id="type" name="type"><br>
+
+        <label for="mutation">Mutation:</label><br>
+        <input type="text" id="mutation" name="mutation"><br>
+
+        <label for="weight">Weight:</label><br>
+        <input type="number" id="weight" name="weight"><br>
+
+        <label for="tame">Tame:</label><br>
+        <select id="tame" name="tame">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select><br>
+
+        <label for="clipped">Clipped:</label><br>
+        <select id="clipped" name="clipped">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select><br>
+
+        <label for="breedingLocation">Breeding Location:</label><br>
+        <input type="text" id="breedingLocation" name="breedingLocation"><br>
+
+        <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</div>
+
+        <footer>
+        <div class="container" id="footer_content">
+            <table>
+                <tr>
+                    <td class="footer_header">Company</td>
+                    <td class="footer_header">Services</td>
+                    <td class="footer_header">Legal</td>
+                    <td class="footer_header">Location</td>
+                </tr>
+                <tr>
+                    <td>Contact Us</td>
+                    <td>Home</td>
+                    <td>Terms and Policies</td>
+                    <td colspan="2" rowspan="2"> KFUPM, <br>
+                                    Student Housing District, <br>
+                                    Dhahran 31261 Saudi Arabia. </td>
+                </tr>
+                <tr>
+                    <td>About Us</td>
+                    <td>Profile</td>
+                    <td>FAQ</td>            
+                </tr>
+                <tr>
+                    <td>Careers</td>
+                    <td>Sell</td>
+                    <td>Refund Policy</td>
+                </tr>
+            </table>
+        </div>
+        <div class="container" id="footer_content2">
+            <p class="footer_header"><img src="content/brand_wh.png" alt="" style="width:128px;"> &nbsp; &nbsp; Get in Touch: &nbsp; &nbsp;<img src="content/instagram-logo.png" alt="" class="social_icons"> &nbsp; &nbsp;<img src="content/twitter.png" alt="" class="social_icons"> &nbsp; &nbsp;<img src="content/tiktok.png" alt="" class="social_icons"> &nbsp; &nbsp;<img src="content/linkedin-logo.png" alt="" class="social_icons"></p>
+        </div>
+        <p id="copyright">© 2024 KFUPM SWE363-232 Team 9. All rights reserved.</p> 
+    </footer>
+    </body>
+
+    </html>

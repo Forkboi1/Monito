@@ -10,7 +10,7 @@
 //     const njkHTML = nunjuck.renderString("../views/loginpage.njk", {});
 //     document.documentElement.innerHTML = njkHTML
 // }
-function main() {    
+function main() {
     let currency = document.getElementById("currencyBox")
     currency.selectedIndex = 0
     currency.addEventListener("change", change)
@@ -53,129 +53,151 @@ function main() {
     })
 }
 
+function checkFormForPay() {
+    var emailInput = document.getElementById('emailPay');
+    var cardNumberInput = document.getElementById('carPay');
+    var nameOnCardInput = document.getElementById('namePay');
+    var cvvInput = document.getElementById('cvPay');
+    var expiryDateInput = document.getElementById('datePay');
 
+    if (!emailInput.value || !cardNumberInput.value || !nameOnCardInput.value || !cvvInput.value || !expiryDateInput.value) {
+        alert('Please fill out all required fields.');
+        return false; 
+    }
+    return true;
+}
+
+document.getElementById('pay_button').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    if (checkFormForPay()) {
+        window.location.href = "thanks.html";
+    }
+});
 async function validateRegisterForm(){
+async function validateRegisterForm() {
     apiUrl = "https://swe363api.onrender.com/register"
-    
+
     let email = document.getElementById("email").value.trim();
     let password = document.getElementById("Regpassword").value.trim();
     let username = document.getElementById("username").value.trim();
     let verifyPassword = document.getElementById("verify-password").value.trim();
-    if (email === "" ||  password === "" || username === "" || verifyPassword === ""){
+    if (email === "" || password === "" || username === "" || verifyPassword === "") {
         alert("Please fill in all fields.");
         return;
-    } else if (password != verifyPassword){
+    } else if (password != verifyPassword) {
         alert("two password should be identical!!");
         return
     }
 
-    await fetch(apiUrl,{method: "POST", headers:{'Content-Type': 'application/json'}, 
-    body: JSON.stringify({email: email, password: password, username: username})
+    await fetch(apiUrl, {
+        method: "POST", headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, password: password, username: username })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('choose other email or password.');
-        }
-        return response.json();
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('choose other email or password.');
+            }
+            return response.json();
 
-    })
-    .then(data => {
-        localStorage.setItem("user", JSON.stringify(data));
-        document.getElementById("login").toggleAttribute("hidden",true);
-        window.location.href = "homepage.html"
-        // const njkHTML = renderString("../views/homepage.njk", {data})
-        // document.documentElement.innerHTML = njkHTML;
-    })
-    .catch(error => {
-        // Alert the user if there's an error
-        alert(error.message);
-    });
+        })
+        .then(data => {
+            localStorage.setItem("user", JSON.stringify(data));
+            document.getElementById("login").toggleAttribute("hidden", true);
+            window.location.href = "homepage.html"
+            // const njkHTML = renderString("../views/homepage.njk", {data})
+            // document.documentElement.innerHTML = njkHTML;
+        })
+        .catch(error => {
+            // Alert the user if there's an error
+            alert(error.message);
+        });
 
 }
 
-async function validateLoginForm(){
-    
+async function validateLoginForm() {
+
     apiUrl = "https://swe363api.onrender.com/auth"
 
     let email = document.getElementById("username-email").value.trim();
     let password = document.getElementById("Logpassword").value.trim();
-    if (email === "" ||  password === ""){
+    if (email === "" || password === "") {
         alert("Please fill in all fields.");
         return;
     }
 
-    await fetch(apiUrl,{method: "POST", headers: {"content-type": "application/json"}, body: JSON.stringify({email: email, password: password})
+    await fetch(apiUrl, {
+        method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ email: email, password: password })
     })
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error('Incorrect email or password.');
-          }
-          return response.json();
-    })
-    .then(data => {
-        localStorage.setItem("user", JSON.stringify(data));
-        // const njkHTML = renderString("../views/homepage.njk", {data})
-        // document.documentElement.innerHTML = njkHTML;
-        window.location.href = "homepage.html"
-        document.getElementById("login").toggleAttribute("hidden",true);
-    })
-    .catch(error => {
-        // Alert the user if there's an error
-        alert(error.message);
-      });
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Incorrect email or password.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            localStorage.setItem("user", JSON.stringify(data));
+            // const njkHTML = renderString("../views/homepage.njk", {data})
+            // document.documentElement.innerHTML = njkHTML;
+            window.location.href = "homepage.html"
+            document.getElementById("login").toggleAttribute("hidden", true);
+        })
+        .catch(error => {
+            // Alert the user if there's an error
+            alert(error.message);
+        });
 
 
 }
 
-function userLoged(){
+function userLoged() {
     const userInfo = localStorage.getItem("user")
-    if (userInfo != null){
-        document.getElementById("login").toggleAttribute("hidden",true);
+    if (userInfo != null) {
+        document.getElementById("login").toggleAttribute("hidden", true);
     }
 }
-function logout(){
+function logout() {
     localStorage.removeItem("user");
-    document.getElementsByClassName("login-form-container")[0].setAttribute("hidden","");
-    document.getElementsByClassName("register-form-container")[0].toggleAttribute("hidden",true);
+    document.getElementsByClassName("login-form-container")[0].setAttribute("hidden", "");
+    document.getElementsByClassName("register-form-container")[0].toggleAttribute("hidden", true);
 }
 
-function toggleLoginRegisterForm(){
+function toggleLoginRegisterForm() {
     document.getElementsByClassName("login-form-container")[0].toggleAttribute("hidden");
     document.getElementsByClassName("register-form-container")[0].toggleAttribute("hidden");
 }
 
-async function showPosts(){
+async function showPosts() {
     apiUrl = "https://swe363api.onrender.com/post"
-    if (localStorage.getItem("user")){
-        document.getElementById("login").toggleAttribute("hidden",true);
+    if (localStorage.getItem("user")) {
+        document.getElementById("login").toggleAttribute("hidden", true);
     }
 
-    await fetch(apiUrl,{
-        method: "GET", 
-        headers: {"content-type": "application/json"}
+    await fetch(apiUrl, {
+        method: "GET",
+        headers: { "content-type": "application/json" }
     })
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error("couldn't retrieve posts due to server");
-          }
-          return response.json();
-    })
-    .then(data => {
-
-        data.posts.forEach(post => {
-            if (post.postType === "pet"){
-                postPetInHomepage(post);
-            }else if(post.postType === "product") {
-                postProductInHomepage(post);
-            }else{
-                postPetInHomepage(post);
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("couldn't retrieve posts due to server");
             }
+            return response.json();
         })
-    })
-    .catch(error => {
-        // Alert the user if there's an error
-        alert(error.message);
-      });
+        .then(data => {
+
+            data.posts.forEach(post => {
+                if (post.postType === "pet") {
+                    postPetInHomepage(post);
+                } else if (post.postType === "product") {
+                    postProductInHomepage(post);
+                } else {
+                    postPetInHomepage(post);
+                }
+            })
+        })
+        .catch(error => {
+            // Alert the user if there's an error
+            alert(error.message);
+        });
 }
 
 // render pet posts
@@ -200,7 +222,7 @@ function postPetInHomepage(postData){
             </a>`
 }
 // render product posts
-function postProductInHomepage(postData){
+function postProductInHomepage(postData) {
     productBody = document.getElementsByClassName("product_view")[1]
     productBody.innerHTML +=`             
             <a href="./post.html?${postData._id}&${postData.userId}">
@@ -246,9 +268,9 @@ async function postFetch(postId, userId){
     apiUrlGetUserInfo = "https://swe363api.onrender.com/users/" + userId;
     apiUrlGetPostInfo = "https://swe363api.onrender.com/post/" + postId;
 
-    await fetch(apiUrlGetPostInfo,{
-        method: "GET", 
-        headers: {"content-type": "application/json"}
+    await fetch(apiUrlGetPostInfo, {
+        method: "GET",
+        headers: { "content-type": "application/json" }
     })
     .then((response) => {
         if (!response.ok) {
@@ -264,9 +286,9 @@ async function postFetch(postId, userId){
         alert(error.message);
       });
 
-    await fetch(apiUrlGetUserInfo,{
-        method: "GET", 
-        headers: {"content-type": "application/json"}
+    await fetch(apiUrlGetUserInfo, {
+        method: "GET",
+        headers: { "content-type": "application/json" }
     })
     .then((response) => {
         if (!response.ok) {
@@ -287,7 +309,7 @@ async function postFetch(postId, userId){
       renderCommentsSection(user, post.comments);
 }
 
-function renderPostInfo(post){
+function renderPostInfo(post) {
     let postCard = document.getElementById("post_desc");
     let postButtons = document.getElementById("post_buttons");
     postCard.innerHTML = `<table>
@@ -377,7 +399,7 @@ async function addToCart(){
       });
 }
 
-function renderUserInfo(user, post){
+function renderUserInfo(user, post) {
     let userCard = document.getElementById("post_card");
     userCard.innerHTML = `<p><strong>Animal Description:</strong></p>
     <p id="desc">${post.description}</p>
@@ -387,7 +409,7 @@ function renderUserInfo(user, post){
 }
 
 
-function displayRatingStars(ratingList) {
+function displayRatingStars(ratingList)  {
     // Calculate the average rating
     const totalRatings = ratingList.length;
     const averageRating = ratingList.reduce((acc, curr) => acc + curr, 0) / totalRatings;
@@ -471,4 +493,71 @@ async function addComment(){
         alert(error.message);
       });
 
+}
+function personal_page(){
+   if(localStorage.getItem('user') == null){
+    window.location.href = "loginpage.html";
+   }
+   else{
+    document.getElementById("login").style.display ="none";
+   const userLocal = localStorage.getItem('user');
+   const user = JSON.parse(userLocal).user;
+// Access the username property from the user object
+const username = user.username;
+   const name = document.getElementById('name')
+   name.innerHTML +=`
+   <strong>${username}</strong>
+   `
+   const name2 = document.getElementById('name2')
+   name2.innerHTML +=`
+   <strong>${username}</strong>
+   `
+   const name3= document.getElementById('name_div')
+   name3.innerHTML+=`
+   <input type="text" id="fName" name="fName" value=${username}>`
+   const email = document.getElementById('email_div')
+   email.innerHTML+=`
+   <input type="text" id="email" name="email" value=${user.email}>`
+   const password = document.getElementById("password_div")
+   password.innerHTML+=`
+   <input type="password" id="password" name="password" value=${user.password}>`
+}
+}
+function edit_user(){
+const userLocal = localStorage.getItem('user');
+const user = JSON.parse(userLocal).user;
+    const emailValue = document.getElementById('email').value;
+    const passwordValue = document.getElementById('password').value;
+    const usernameValue = document.getElementById('fName').value;
+    const token =  JSON.parse(userLocal).token;
+    fetch("https://swe363api.onrender.com/users/", {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'x-auth': token
+            },
+            body: JSON.stringify({
+                email: emailValue,
+                password: passwordValue,
+                username: usernameValue
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('invalid');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            // Alert the user if there's an error
+            alert(error.message);
+        });
+}
+function loginButtonHider(){
+    if(localStorage.getItem('user') !== null){
+    document.getElementById("login").style.display ="none";
+    }
 }

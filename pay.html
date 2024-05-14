@@ -4,10 +4,10 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <link rel="stylesheet" href="general_design.css">
-    <link rel="stylesheet" href="pay.css">
+    <link rel="stylesheet" href="backend/public/pay.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
-    <script src="pay.js"></script>
+    <script src="backend/public/frontendJS.js" defer></script>
     <title></title>
 </head>
 <body>
@@ -40,21 +40,19 @@
     
 <main class="payContainer">
     <div class="methods">
-        <button class="masterCard" id="button1">Master Card</button>
-        <button class="paypal" id="button1">Paypal</button>
-        <button class="applePay" id="button1">Apple pay</button>
+        <img class="masterCard" id="button1">
     </div>
     
-        <h1 id="or">OR</h1>
+        <div id="or"></div>
     <div class="items">   
         <h2>Contact Information</h2>
-        <input type="text" id="input1" placeholder="email">
+        <input type="text" class="input1" id="emailPay" placeholder="email" required>
         <h2>Card Details</h2>
-        <input type="number" id="input1" placeholder="card number">
-        <input type="text" id="input1" placeholder="Name on card">
+        <input type="number" class="input1" id="carPay" placeholder="card number" required>
+        <input type="text" class="input1" id="namePay" placeholder="Name on card" required>
         <div>
-            <input type="number" id="input1" placeholder="CVV" style="width: 140px;">
-            <input type="date" id="input1" placeholder="Expiry Date" style="width: 140px;">
+            <input type="number" class="input1" id="cvPay" placeholder="CVV" style="width: 140px;" required>
+            <input type="date" class="input1" id="datePay" placeholder="Expiry Date" style="width: 140px;" required>
         </div>
         <button style="background-color: #003459;
     color: white;
