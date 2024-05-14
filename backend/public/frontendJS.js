@@ -359,3 +359,48 @@ function renderCommentsSection(user, comments){
     </div>`
     });
 }
+function personal_page(){
+   if(localStorage.getItem('user') == null){
+    window.location.href = "loginpage.html";
+   }
+   else{
+   const userLocal = localStorage.getItem('user');
+   const user = JSON.parse(userLocal).user;
+// Access the username property from the user object
+const username = user.username;
+   const name = document.getElementById('name')
+   name.innerHTML +=`
+   <strong>${username}</strong>
+   `
+   const name2 = document.getElementById('name2')
+   name2.innerHTML +=`
+   <strong>${username}</strong>
+   `
+   const name3= document.getElementById('name_div')
+   name3.innerHTML+=`
+   <input type="text" id="fName" name="fName" value=${username}>`
+   const email = document.getElementById('email_div')
+   email.innerHTML+=`
+   <input type="text" id="email" name="email" value=${user.email}>`
+   const password = document.getElementById("password_div")
+   password.innerHTML+=`
+   <input type="password" id="password" name="password" value=${user.password}>`
+   console.log(user._id)
+   apiUrl = "https://swe363api.onrender.com/users/"+user._id
+   fetch(apiUrl,{method: "GET", headers:{'Content-Type': 'application/json'}})
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('invalid');
+        }
+        return response.json();
+    })
+    .then(data => {
+       console.log(data)
+    })
+    .catch(error => {
+        // Alert the user if there's an error
+        alert(error.message);
+    });
+    
+}
+}
