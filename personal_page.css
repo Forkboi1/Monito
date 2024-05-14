@@ -147,7 +147,7 @@
     color: #000000;
 }
 
-#email {
+#email,#new_password {
     width: 277px;
     height: 35px;
     background: #F1D092;
@@ -225,7 +225,7 @@
     border: #003459 solid 3px;
 }
 
-#save {
+#save,#new_pass_button {
     width: 126.5px;
     height: 40.21px;
     background: #F1D092;
@@ -234,7 +234,7 @@
     border: #003459 solid 3px;
 }
 
-#save:hover {
+#save:hover,#new_pass_button:hover {
     background-color: orange;
 }
 
@@ -351,4 +351,38 @@
     width: 22.5px;
     height: 22.5px;
     background-color: #003459;
+}
+#going_back{
+    color:#003459;
+    text-decoration: none;
+}
+#forget-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+}
+#forget-main *{
+    margin-bottom: -30px;
+}
+#forget-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#forget-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+#forget-form *{
+    margin-bottom: 30px;
+}
+#forget_password_img{
+    width: 400px;
+    height: 100px;
 }
