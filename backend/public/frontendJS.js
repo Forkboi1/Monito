@@ -484,7 +484,6 @@ async function addComment(){
     }
 
     const commentText = document.getElementById("commenttttttt").value.trim();
-    console.log(postId);
     const apiUrl = "https://swe363api.onrender.com/comment/" + postId;
     const token = JSON.parse(localStorage.getItem("user")).token;
     const headers = {'Content-Type': 'application/json','x-auth': token};
@@ -512,33 +511,33 @@ async function addComment(){
     });
 }
 function personal_page(){
-   if(localStorage.getItem('user') == null){
-    window.location.href = "loginpage.html";
-   }
-   else{
-   document.getElementById("login").style.display ="none";
-   const userLocal = localStorage.getItem('user');
-   const user = JSON.parse(userLocal).user;
-// Access the username property from the user object
-const username = user.username;
-   const name = document.getElementById('name')
-   name.innerHTML +=`
-   <strong>@${username}</strong>
-   `
-   const name2 = document.getElementById('name2')
-   name2.innerHTML +=`
-   <strong>${username}</strong>
-   `
-   const name3= document.getElementById('name_div')
-   name3.innerHTML+=`
-   <input type="text" id="fName" name="fName" value=${username}>`
-   const email = document.getElementById('email_div')
-   email.innerHTML+=`
-   <input type="text" id="email" name="email" value=${user.email}>`
-   const password = document.getElementById("password_div")
-   password.innerHTML+=`
-   <input type="password" id="password" name="password" value=${user.password}>`
-}
+    if(localStorage.getItem('user') == null){
+        window.location.href = "loginpage.html";    
+    }
+    else{
+        document.getElementById("login").style.display ="none";
+        const userLocal = localStorage.getItem('user');
+        const user = JSON.parse(userLocal).user;
+        // Access the username property from the user object
+        const username = user.username;
+        const name = document.getElementById('name')
+        name.innerHTML +=`
+        <strong>@${username}</strong>
+        `
+        const name2 = document.getElementById('name2')
+        name2.innerHTML +=`
+        <strong>${username}</strong>
+        `
+        const name3= document.getElementById('name_div')
+        name3.innerHTML+=`
+        <input type="text" id="fName" name="fName" value=${username}>`
+        const email = document.getElementById('email_div')
+        email.innerHTML+=`
+        <input type="text" id="email" name="email" value=${user.email}>`
+        const password = document.getElementById("password_div")
+        password.innerHTML+=`
+        <input type="password" id="password" name="password" value=${user.password}>`
+    }
 }
 async function edit_user() {
     const userLocal = localStorage.getItem("user");
@@ -639,6 +638,7 @@ async function displayCartItems(){
 
     })
 }
+
 function loginButtonForCreatePost(){
     if(localStorage.getItem('user') !== null){
     document.getElementById("login").style.display ="none";
