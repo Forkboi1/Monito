@@ -45,15 +45,15 @@
                 Contact US!
             </h2>
             <div id="box">
-                <form action="POST" id="box_form">
+                <div  id="box_form">
                     <label class="label1">Full Name</label>
-                    <input type="text" class="inputArea">
+                    <input type="text" id="firstname" class="inputArea">
                     <label class="label1">Email</label>
-                    <input type="text" class="inputArea">
+                    <input type="text" id="emaily" class="inputArea">
                     <label class="label1">Message</label>
-                    <textarea name="msg" id="msg" class="message"></textarea>
-                    <button class="send">Send</button>
-                </form>
+                    <textarea name="msg" id="message" class="message"></textarea>
+                    <button class="send" onclick="contactSend()">Send</button>
+                </div>
             </div>
         </div>
         

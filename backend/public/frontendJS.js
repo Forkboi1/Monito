@@ -651,4 +651,21 @@ function loginButtonForCreatePost(){
 function createPostButton(){
         window.location.href = "createPost.html";
 }
+function contactSend2() {
+    var emailInput = document.getElementById('emaily');
+    var nameOnCardInput = document.getElementById('firstname');
+    var cvvInput = document.getElementById('message');
 
+    if (!emailInput.value || !nameOnCardInput.value || !cvvInput.value ) {        
+        return false; 
+    }
+    return true;
+}
+function contactSend() {
+    if (contactSend2()) {
+        window.location.href="homepage.html";
+    }
+    else{
+        alert('Please fill out all required fields.');
+    }
+}
