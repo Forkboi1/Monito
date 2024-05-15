@@ -483,7 +483,7 @@ async function addComment(){
         return;
     }
 
-    const commentText = document.getElementById("btnNewQuestion").value.trim();
+    const commentText = document.getElementById("commenttttttt").value.trim();
     console.log(postId);
     const apiUrl = "https://swe363api.onrender.com/comment/" + postId;
     const token = JSON.parse(localStorage.getItem("user")).token;
