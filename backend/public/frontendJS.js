@@ -615,7 +615,7 @@ async function displayCartItems(){
     .then(data => { 
         data.cart.forEach(p => {
             productSection.innerHTML += 
-            `<div class ="product"><img src="content/a8.png" alt="a8">
+            `<div class ="product"><img src="${p.photoUrls[0]}" alt="a8">
                 <div>
                     <p class="bolded_p">${p.title}</p>
                     <p class="description">${p.description}</p>
@@ -698,8 +698,7 @@ async function createPost(){
         // Append the file path to the array
         filePaths.push(filePath);
     });
-
-
+    const userLocal = localStorage.getItem("user");
     const token = JSON.parse(userLocal).token;
     const apiUrl = "https://swe363api.onrender.com/post";
 
@@ -738,7 +737,7 @@ async function createPost(){
 
     try {
         const response = await fetch(apiUrl, {
-            method: "PUT",
+            method: "POST",
             headers: headers,
             body: JSON.stringify(requestBody)
         });
