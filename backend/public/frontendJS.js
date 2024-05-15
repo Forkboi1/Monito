@@ -524,7 +524,7 @@ function personal_page(){
 const username = user.username;
    const name = document.getElementById('name')
    name.innerHTML +=`
-   <strong>${username}</strong>
+   <strong>@${username}</strong>
    `
    const name2 = document.getElementById('name2')
    name2.innerHTML +=`
@@ -587,3 +587,16 @@ function loginButton(){
         })    
     }
 }
+function loginButtonForCreatePost(){
+    if(localStorage.getItem('user') !== null){
+    document.getElementById("login").style.display ="none";
+    }
+    else{
+        window.location.href = "loginpage.html";
+    }
+    
+    }
+function createPostButton(){
+        window.location.href = "createPost.html";
+}
+

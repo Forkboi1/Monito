@@ -11,7 +11,7 @@
     <link href="createPost.css" rel="stylesheet">
     <script src="./backend/public/frontendJS.js"></script>
 </head>
-  <body>
+  <body onload="loginButtonForCreatePost()">
     <div class="Container">
         <header>
             <img src="content/brand.png" alt="brand" id="brand">
@@ -33,13 +33,13 @@
                 <option value="JPY">JPY</option>
                 </select>
             <div id="buttons">
-                <button id="createPost">Create Post</button>
+                <button id="createPost" hidden>Create Post</button>
                 <button id="login">Login</button>
             </div>   
     </header>
 
     <div id="post_form">
-    <form action="/create-post" method="POST" id="form_post">
+    <div id="form_post">
         <h1>Create a New Post</h1>
         <label for="title">Title:</label><br>
         <input type="text" id="title" name="title"><br>
@@ -51,9 +51,9 @@
             <option value="product">Product</option>
         </select><br>
         <label for="price">Price:</label><br>
-        <input type="number" id="price" name="price"><br>
+        <input type="number" id="price" name="price" min="0"><br>
         <label for="quantity">Quantity:</label><br>
-        <input type="number" id="quantity" name="quantity"><br>
+        <input type="number" id="quantity" name="quantity" min="1"><br>
         <label for="photoUrls">Photo URLs:</label><br>
         <input type="text" id="photoUrls" name="photoUrls"><br>
 
@@ -61,13 +61,16 @@
         <input type="text" id="name" name="name"><br>
 
         <label for="age">Age:</label><br>
-        <input type="number" id="age" name="age"><br>
+        <input type="number" id="age" name="age" min="0"><br>
 
         <label for="gender">Gender:</label><br>
-        <input type="text" id="gender" name="gender"><br>
+        <select id="gender" name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select><br>
 
         <label for="height">Height:</label><br>
-        <input type="number" id="height" name="height"><br>
+        <input type="number" id="height" name="height" min="1"><br>
 
         <label for="species">Species:</label><br>
         <input type="text" id="species" name="species"><br>
@@ -79,7 +82,7 @@
         <input type="text" id="mutation" name="mutation"><br>
 
         <label for="weight">Weight:</label><br>
-        <input type="number" id="weight" name="weight"><br>
+        <input type="number" id="weight" name="weight" min="1"><br>
 
         <label for="tame">Tame:</label><br>
         <select id="tame" name="tame">
@@ -95,9 +98,7 @@
 
         <label for="breedingLocation">Breeding Location:</label><br>
         <input type="text" id="breedingLocation" name="breedingLocation"><br>
-
-        <input type="submit" value="Submit">
-        </form>
+        <button id = "save" onclick="">Save</button>
     </div>
 
 </div>
