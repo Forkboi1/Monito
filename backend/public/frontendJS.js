@@ -251,6 +251,11 @@ function postProductInHomepage(postData){
             </a>`
 }
 
+let post = "";
+let postId = 0;
+let user = "";
+let userId = 0;
+
 function renderPost(){
     // Get the current URL
     const currentUrl = window.location.href;
@@ -265,13 +270,12 @@ function renderPost(){
     const paramPairs = queryParams.split('&');
 
     // Extract the two IDs
-    const postId = paramPairs[0];
-    const userId = paramPairs[1];
+    postId = paramPairs[0];
+    userId = paramPairs[1];
     postFetch(postId,userId);
     return postId
 }
-let post = "";
-let user = "";
+
 async function postFetch(postId, userId){
     apiUrlGetUserInfo = "https://swe363api.onrender.com/users/" + userId;
     apiUrlGetPostInfo = "https://swe363api.onrender.com/post/" + postId;
@@ -474,41 +478,39 @@ function renderCommentsSection(user, comments){
 }
 
 async function addComment(){
-    const commentText = document.getElementById("btnNewQuestion").value.trim();
-    const postId = renderPost();
-    const apiUrl = "https://swe363api.onrender.com/comment/" + postId;
-    
-    // Check if a user is logged in
     if (!localStorage.getItem("user")) {
         alert("Please log in to post a comment.");
         return;
     }
 
-    const token = JSON.parse(localStorage.getItem("user")) + ""
-    try {
-        const response = await fetch(apiUrl, {
-            method: "POST", 
-            headers: {
-                "Content-Type": "application/json",
-                "x-auth": token
-            },
-            body: JSON.stringify({ text: commentText })
-        });
-    
-        // Check if the request was successful
-        if (!response.ok) {
-            throw new Error("Failed to post comment. Server responded with status: " + response.status);
-        }
-    
-        const data = await response.json();
-        console.log("Comment posted successfully:", data);
-    } catch (error) {
-        // Log detailed error message to console
-        console.error("Error posting comment:", error);
-        // Alert the user with a generic error message
-        alert("An error occurred while posting your comment. Please try again later.");
-    }
+    const commentText = document.getElementById("btnNewQuestion").value.trim();
+    console.log(postId);
+    const apiUrl = "https://swe363api.onrender.com/comment/" + postId;
+    const token = JSON.parse(localStorage.getItem("user")).token;
+    const headers = {'Content-Type': 'application/json','x-auth': token
+};
+    const body = JSON.stringify({ text: commentText });
 
+
+    fetch(apiUrl, {
+        method: "POST", 
+        headers: headers,
+        body: body
+    })
+    .then(response => {
+        if (!response.ok) {
+            alert("Couldnt create a comment");
+            return
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log("Comment posted succussfully " + data)
+    })
+    .catch(error => {
+        // Alert the user if there's an error
+        alert(error.message);
+    });
 }
 function personal_page(){
    if(localStorage.getItem('user') == null){
