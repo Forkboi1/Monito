@@ -41,64 +41,70 @@
     <div id="post_form">
     <div id="form_post">
         <h1>Create a New Post</h1>
-        <label for="title">Title:</label><br>
+        <label for="title">Title:*</label><br>
         <input type="text" id="title" name="title"><br>
-        <label for="description">Description:</label><br>
+
+        <label for="description">Description:*</label><br>
         <textarea id="description" name="description"></textarea><br>
-        <label for="postType">Post Type:</label><br>
+
+        <label for="postType">Post Type:*</label><br>
         <select id="postType" name="postType">
             <option value="pet">Pet</option>
             <option value="product">Product</option>
         </select><br>
-        <label for="price">Price:</label><br>
+
+        <label for="price">Price:*</label><br>
         <input type="number" id="price" name="price" min="0"><br>
-        <label for="quantity">Quantity:</label><br>
+
+        <label for="quantity">Quantity:*</label><br>
         <input type="number" id="quantity" name="quantity" min="1"><br>
-        <label for="photoUrls">Photo URLs:</label><br>
+
+        <label for="photoUrls">Photo URLs:*</label><br>
         <input type="text" id="photoUrls" name="photoUrls"><br>
 
-        <label for="name">Name:</label><br>
+        <label for="name">Name:*</label><br>
         <input type="text" id="name" name="name"><br>
 
-        <label for="age">Age:</label><br>
+        <label for="age">Age:*</label><br>
         <input type="number" id="age" name="age" min="0"><br>
 
-        <label for="gender">Gender:</label><br>
+        <label for="gender">Gender:*</label><br>
         <select id="gender" name="gender">
             <option value="male">Male</option>
             <option value="female">Female</option>
         </select><br>
 
-        <label for="height">Height:</label><br>
+        <label for="height">Height:*</label><br>
         <input type="number" id="height" name="height" min="1"><br>
 
-        <label for="species">Species:</label><br>
+        <label for="species">Species:*</label><br>
         <input type="text" id="species" name="species"><br>
 
-        <label for="type">Type:</label><br>
+        <label for="type">Type:*</label><br>
         <input type="text" id="type" name="type"><br>
 
-        <label for="mutation">Mutation:</label><br>
+        <label for="mutation">Mutation:*</label><br>
         <input type="text" id="mutation" name="mutation"><br>
 
-        <label for="weight">Weight:</label><br>
+        <label for="weight">Weight:*</label><br>
         <input type="number" id="weight" name="weight" min="1"><br>
 
-        <label for="tame">Tame:</label><br>
+        <label for="tame">Tame:*</label><br>
         <select id="tame" name="tame">
             <option value="true">True</option>
             <option value="false">False</option>
         </select><br>
 
-        <label for="clipped">Clipped:</label><br>
+        <label for="clipped">Clipped:*</label><br>
         <select id="clipped" name="clipped">
             <option value="true">True</option>
             <option value="false">False</option>
         </select><br>
 
-        <label for="breedingLocation">Breeding Location:</label><br>
+        <label for="breedingLocation">Breeding Location:*</label><br>
         <input type="text" id="breedingLocation" name="breedingLocation"><br>
-        <button id = "save" onclick="">Save</button>
+
+        <button id = "save" onclick="createPost()">Save</button>
     </div>
 
 </div>

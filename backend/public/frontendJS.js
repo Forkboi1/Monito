@@ -520,23 +520,20 @@ function personal_page(){
         const user = JSON.parse(userLocal).user;
         // Access the username property from the user object
         const username = user.username;
+
         const name = document.getElementById('name')
-        name.innerHTML +=`
-        <strong>@${username}</strong>
-        `
+        name.innerHTML +=`<strong>@${username}</strong>`
         const name2 = document.getElementById('name2')
-        name2.innerHTML +=`
-        <strong>${username}</strong>
-        `
+        name2.innerHTML +=`<strong>${username}</strong>`
+
         const name3= document.getElementById('name_div')
-        name3.innerHTML+=`
-        <input type="text" id="fName" name="fName" value=${username}>`
+        name3.innerHTML+=`<input type="text" id="fName" name="fName" value=${username}>`
+
         const email = document.getElementById('email_div')
-        email.innerHTML+=`
-        <input type="text" id="email" name="email" value=${user.email}>`
+        email.innerHTML+=`<input type="text" id="email" name="email" value=${user.email}>`
+
         const password = document.getElementById("password_div")
-        password.innerHTML+=`
-        <input type="password" id="password" name="password" value=${user.password}>`
+        password.innerHTML+=`<input type="password" id="password" name="password" value=${user.password}>`
     }
 }
 async function edit_user() {
@@ -561,8 +558,6 @@ async function edit_user() {
     const requestBody = {
         user: user 
     };
-
-    console.log(JSON.stringify(requestBody)); 
 
     try {
         const response = await fetch(apiUrl, {
@@ -667,5 +662,96 @@ function contactSend() {
     }
     else{
         alert('Please fill out all required fields.');
+    }
+}
+
+async function createPost(){
+    var title = document.getElementById("title").value.trim();
+    var description = document.getElementById("description").value.trim();
+    var postType = document.getElementById("postType").value.trim();
+    var price = document.getElementById("price").value.trim();
+    var quantity = document.getElementById("quantity").value.trim();
+    var photoUrls = document.getElementById("photoUrls").value.trim();
+    var name = document.getElementById("name").value.trim();
+    var age = document.getElementById("age").value.trim();
+    var gender = document.getElementById("gender").value.trim();
+    var height = document.getElementById("height").value.trim();
+    var species = document.getElementById("species").value.trim();
+    var type = document.getElementById("type").value.trim();
+    var mutation = document.getElementById("mutation").value.trim();
+    var weight = document.getElementById("weight").value.trim();
+    var tame = document.getElementById("tame").value.trim();
+    var clipped = document.getElementById("clipped").value.trim();
+    var breedingLocation = document.getElementById("breedingLocation").value.trim();
+
+    if (!title || !description || !postType || !price || !quantity || !photoUrls || !name || !age || !gender || !height || !species || !type || !mutation || !weight || !tame || !clipped || !breedingLocation) {
+        alert("fill in all required fields")
+    }
+
+    var names = photoUrls.split(',');
+    // Initialize an empty array to store the file paths
+    var filePaths = [];
+    // Loop through each image name
+    names.forEach(function(name) {
+        // Construct the file path with the specified directory and image name
+        var filePath = "content/" + name.trim(); // Adjust the path as needed
+        // Append the file path to the array
+        filePaths.push(filePath);
+    });
+
+
+    const token = JSON.parse(userLocal).token;
+    const apiUrl = "https://swe363api.onrender.com/post";
+
+    const post = {
+        title: title,
+        description: description,
+        code: Math.floor(Math.random() * 90000) + 10000,
+        postType: postType,
+        userId: userId,
+        price: price,
+        quantity: quantity,
+        photoUrls: filePaths,
+        images: [],
+        name: name,
+        age: age,
+        gender: gender,
+        height: height,
+        species: species,
+        type: type,
+        mutation: mutation,
+        weight: weight,
+        tame: tame,
+        clipped: clipped,
+        breedingLocation: breedingLocation,
+        comments: []
+    };
+
+    const headers = {
+        'Content-Type': 'application/json',
+        'x-auth': token
+    };
+
+    const requestBody = {
+        post: post 
+    };
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: "PUT",
+            headers: headers,
+            body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to update user.');
+        }
+
+        const data = await response.json();
+        console.log(data); 
+        alert("Post information uploaded successfully.");
+    } catch (error) {
+        console.error('Error uploading post:', error);
+        alert("Failed to update user. Please try again.");
     }
 }
