@@ -541,41 +541,58 @@ const username = user.username;
    <input type="password" id="password" name="password" value=${user.password}>`
 }
 }
-function edit_user(){
-const userLocal = localStorage.getItem("user");
-const user = JSON.parse(userLocal).user;
-console.log(user)
+async function edit_user() {
+    const userLocal = localStorage.getItem("user");
     const emailValue = document.getElementById('email').value;
     const passwordValue = document.getElementById('password').value;
     const usernameValue = document.getElementById('fName').value;
-    const token =  JSON.parse(userLocal).token;
-    const apiUrl = "https://swe363api.onrender.com/users/" + user._id;
-    fetch(apiUrl, {
+    const token = JSON.parse(userLocal).token;
+    const apiUrl = "https://swe363api.onrender.com/users/";
+
+    const user = {
+        email: emailValue,
+        password: passwordValue,
+        username: usernameValue
+    };
+
+    const headers = {
+        'Content-Type': 'application/json',
+        'x-auth': token
+    };
+
+    const requestBody = {
+        user: user 
+    };
+
+    console.log(JSON.stringify(requestBody)); 
+
+    try {
+        const response = await fetch(apiUrl, {
             method: "PUT",
-            headers: {
-                'Content-Type': 'application/json',
-                'x-auth': token
-            },
-            body: JSON.stringify({
-                email: emailValue,
-                password: passwordValue,
-                username: usernameValue
-            })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('invalid');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data)
-        })
-        .catch(error => {
-            // Alert the user if there's an error
-            alert(error.message);
+            headers: headers,
+            body: JSON.stringify(requestBody)
         });
+
+        if (!response.ok) {
+            throw new Error('Failed to update user.');
+        }
+
+        const data = await response.json();
+        console.log(data); 
+
+        const updatedUser = {
+            ...JSON.parse(userLocal),
+            user: data.user 
+        };
+        localStorage.setItem("user", JSON.stringify(updatedUser));
+
+        alert("User information updated successfully.");
+    } catch (error) {
+        console.error('Error updating user:', error);
+        alert("Failed to update user. Please try again.");
+    }
 }
+
 function loginButton(){
     if(localStorage.getItem('user') !== null){
     document.getElementById("login").style.display ="none";
