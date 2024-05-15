@@ -8,7 +8,7 @@
     <link href="general_design.css" rel="stylesheet">
     <link href="homepage.css" rel="stylesheet">
     <link href="footer.css" rel="stylesheet">
-    <link href="createPost.css" rel="stylesheet">
+    <link href="./backend/public/createPost.css" rel="stylesheet">
     <script src="./backend/public/frontendJS.js"></script>
 </head>
   <body onload="loginButtonForCreatePost()">
@@ -37,76 +37,95 @@
                 <button id="login">Login</button>
             </div>   
     </header>
-
     <div id="post_form">
-    <div id="form_post">
-        <h1>Create a New Post</h1>
-        <label for="title">Title:*</label><br>
-        <input type="text" id="title" name="title"><br>
-
-        <label for="description">Description:*</label><br>
-        <textarea id="description" name="description"></textarea><br>
-
-        <label for="postType">Post Type:*</label><br>
-        <select id="postType" name="postType">
-            <option value="pet">Pet</option>
-            <option value="product">Product</option>
-        </select><br>
-
-        <label for="price">Price:*</label><br>
-        <input type="number" id="price" name="price" min="0"><br>
-
-        <label for="quantity">Quantity:*</label><br>
-        <input type="number" id="quantity" name="quantity" min="1"><br>
-
-        <label for="photoUrls">Photo URLs:*</label><br>
-        <input type="text" id="photoUrls" name="photoUrls"><br>
-
-        <label for="name">Name:*</label><br>
-        <input type="text" id="name" name="name"><br>
-
-        <label for="age">Age:*</label><br>
-        <input type="number" id="age" name="age" min="0"><br>
-
-        <label for="gender">Gender:*</label><br>
-        <select id="gender" name="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select><br>
-
-        <label for="height">Height:*</label><br>
-        <input type="number" id="height" name="height" min="1"><br>
-
-        <label for="species">Species:*</label><br>
-        <input type="text" id="species" name="species"><br>
-
-        <label for="type">Type:*</label><br>
-        <input type="text" id="type" name="type"><br>
-
-        <label for="mutation">Mutation:*</label><br>
-        <input type="text" id="mutation" name="mutation"><br>
-
-        <label for="weight">Weight:*</label><br>
-        <input type="number" id="weight" name="weight" min="1"><br>
-
-        <label for="tame">Tame:*</label><br>
-        <select id="tame" name="tame">
-            <option value="true">True</option>
-            <option value="false">False</option>
-        </select><br>
-
-        <label for="clipped">Clipped:*</label><br>
-        <select id="clipped" name="clipped">
-            <option value="true">True</option>
-            <option value="false">False</option>
-        </select><br>
-
-        <label for="breedingLocation">Breeding Location:*</label><br>
-        <input type="text" id="breedingLocation" name="breedingLocation"><br>
-
-        <button id = "save" onclick="createPost()">Save</button>
+        <div id="form_post">
+            <h1>Create a New Post</h1>
+    
+            <div class="input-row">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="Title">
+            </div>
+    
+            <div class="input-row">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" placeholder="Description"></textarea>
+            </div>
+    
+            <div class="input-row">
+                <label for="postType">Post Type:</label>
+                <select id="postType" name="postType">
+                    <option value="pet">Pet</option>
+                    <option value="product">Product</option>
+                </select>
+            </div>
+    
+            <div class="input-row">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" min="0" placeholder="Price">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" placeholder="Quantity">
+            </div>
+    
+            <div class="input-row">
+                <label for="photoUrls">Photo URLs:</label>
+                <input type="text" id="photoUrls" name="photoUrls" placeholder="Photo URLs">
+            </div>
+    
+            <h2>Pet Details</h2>
+    
+            <div class="input-row">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="0">
+            </div>
+    
+            <div class="input-row">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <label for="height">Height:</label>
+                <input type="number" id="height" name="height" min="1">
+            </div>
+    
+            <div class="input-row">
+                <label for="species">Species:</label>
+                <input type="text" id="species" name="species">
+                <label for="type">Type:</label>
+                <input type="text" id="type" name="type">
+            </div>
+    
+            <div class="input-row">
+                <label for="mutation">Mutation:</label>
+                <input type="text" id="mutation" name="mutation">
+                <label for="weight">Weight:</label>
+                <input type="number" id="weight" name="weight" min="1">
+            </div>
+    
+            <div class="input-row">
+                <label for="tame">Tame:</label>
+                <select id="tame" name="tame">
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>
+                <label for="clipped">Clipped:</label>
+                <select id="clipped" name="clipped">
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>
+            </div>
+    
+            <div class="input-row">
+                <label for="breedingLocation">Breeding Location:</label>
+                <input type="text" id="breedingLocation" name="breedingLocation">
+            </div>
+    
+            <button id="save" onclick="">Save</button>
+        </div>
     </div>
-
+    
 </div>
 
         <footer>
