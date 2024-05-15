@@ -214,7 +214,7 @@ function postPetInHomepage(postData){
     petBody.innerHTML +=`             
             <a href="./post.html?${postData._id}&${postData.userId}">
                 <div class="animal">
-                    <img src="content/bird.jpg" alt="${postData.code} - ${postData.name}">
+                    <img src="${postData.photoUrls[0]}" alt="${postData.code} - ${postData.name}">
                     <table>
                         <tr>
                             <td><strong>${postData.code} - ${postData.name}</strong></td>
@@ -235,7 +235,7 @@ function postProductInHomepage(postData){
     productBody.innerHTML +=`             
             <a href="./post.html?${postData._id}&${postData.userId}">
                 <div class="animal">
-                    <img src="content/bird.jpg" alt="${postData.name}">
+                    <img src="${postData.photoUrls[0]}" alt="${postData.name}">
                     <table>
                         <tr>
                             <td><strong>${postData.name}</strong></td>
