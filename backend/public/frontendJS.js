@@ -517,6 +517,7 @@ function personal_page(){
     window.location.href = "loginpage.html";
    }
    else{
+   document.getElementById("login").style.display ="none";
    const userLocal = localStorage.getItem('user');
    const user = JSON.parse(userLocal).user;
 // Access the username property from the user object
@@ -541,13 +542,15 @@ const username = user.username;
 }
 }
 function edit_user(){
-const userLocal = localStorage.getItem('user');
+const userLocal = localStorage.getItem("user");
 const user = JSON.parse(userLocal).user;
+console.log(user)
     const emailValue = document.getElementById('email').value;
     const passwordValue = document.getElementById('password').value;
     const usernameValue = document.getElementById('fName').value;
     const token =  JSON.parse(userLocal).token;
-    fetch("https://swe363api.onrender.com/users/", {
+    const apiUrl = "https://swe363api.onrender.com/users/" + user._id;
+    fetch(apiUrl, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json',
