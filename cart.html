@@ -8,60 +8,51 @@
     <link rel="stylesheet" href="cart.css">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
-    <script src="cart.js"></script>
+    <script src="./backend/public/frontendJS.js"></script>
 </head>
-<body onload="main()">
+<body onload="displayCartItems()">
     <div class="container">
-    <header>
-        <img src="content/brand.png" alt="brand" id="brand">
-        <div id="links">
-            <a href="homepage.html" class="header_link">Home</a>
-            <a href="personal_page.html" class="header_link">Profile</a>
-            <a href="about.html" class="header_link">About</a>
-            <a href="contact.html" class="header_link">Contact</a>
-        </div>
-        <a href="cart.html"><img src="content/shopping-cart.png" alt="" id="cart_pic"></a>
-        <form action="POST" id="search_form">
-            <input type="search" name="s" id="search" placeholder="Search something here!">
-        </form>
-        <img src="content/sa.png" alt="flag" class="currency" id=curimg>
-        <select name="curr" id="currencyBox">
-            <option value="SAR" selected>SAR</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="JPY">JPY</option>
-        </select>
-        <div id="buttons">
-              <button id="createPost">Create Post</button>
-              <button id="login">Login</button>
-        </div>   
-</header>
-    <main>
-        <div class="allpage">
-        <div class="cart-container">
-            <h2>Shopping Cart</h2>
-            <p id="count"></p>
-            <div id="products"></div>
-            <div class ="product">   <img src="content/bird.jpg" alt="">
-                <div>
-                    <p class="bolded_p">Lutino Cockatiel</p>
-                    <p class="description">Name:Lemon SKU#: 12422</p>
-                </div>
-                <input class ="number_of_items" type ="number" min="1" max="1" value="1">
-                <p class="price">352 SAR</p>
-                <img class="delete" src="content/delete.png" alt="delete"></div>
-                
-            
-        </div>
-        <div class="payment-container">
-            <img id = "brandcart" src="content/brand.png" alt="brand">
-            <input type="text" id="coupon" placeholder="enter your coupon code">
-            <button id="pay">pay</button>
+        <header>
+            <img src="content/brand.png" alt="brand" id="brand">
+            <div id="links">
+                <a href="homepage.html" class="header_link">Home</a>
+                <a href="personal_page.html" class="header_link">Profile</a>
+                <a href="about.html" class="header_link">About</a>
+                <a href="contact.html" class="header_link">Contact</a>
             </div>
-        </div>
+            <a href="cart.html"><img src="content/shopping-cart.png" alt="" id="cart_pic"></a>
+            <form action="POST" id="search_form">
+                <input type="search" name="s" id="search" placeholder="Search something here!">
+            </form>
+            <img src="content/sa.png" alt="flag" class="currency" id=curimg>
+            <select name="curr" id="currencyBox">
+                <option value="SAR" selected>SAR</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="JPY">JPY</option>
+            </select>
+            <div id="buttons">
+                <button id="createPost">Create Post</button>
+                <button id="login">Login</button>
+            </div>   
+        </header>
+        <main>
+            <div class="allpage">
+                <div class="cart-container">
+                    <h2>Shopping Cart</h2>
+                    <p id="count"></p>
+                    <div id="products">
+
+                    </div>
+                </div>
+                    <div class="payment-container">
+                        <img id = "brandcart" src="content/brand.png" alt="brand">
+                        <input type="text" id="coupon" placeholder="enter your coupon code">
+                        <button id="pay">pay</button>
+                    </div>
+            </div>
+        </main>
     </div>
-    </main>
-</div>
     <footer>
         <div class="container" id="footer_content">
             <table>
@@ -98,4 +89,5 @@
     </footer>
     
 </body>
+
 </html>
