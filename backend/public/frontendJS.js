@@ -214,7 +214,7 @@ function postPetInHomepage(postData){
     petBody.innerHTML +=`             
             <a href="./post.html?${postData._id}&${postData.userId}">
                 <div class="animal">
-                    <img src="${postData.photoUrls[0]}" alt="${postData.code} - ${postData.name}">
+                    <img src="content/bird.jpg" alt="${postData.code} - ${postData.name}">
                     <table>
                         <tr>
                             <td><strong>${postData.code} - ${postData.name}</strong></td>
@@ -235,7 +235,7 @@ function postProductInHomepage(postData){
     productBody.innerHTML +=`             
             <a href="./post.html?${postData._id}&${postData.userId}">
                 <div class="animal">
-                    <img src="${postData.photoUrls[0]}" alt="${postData.name}">
+                    <img src="content/bird.jpg" alt="${postData.name}">
                     <table>
                         <tr>
                             <td><strong>${postData.name}</strong></td>
@@ -487,8 +487,7 @@ async function addComment(){
     console.log(postId);
     const apiUrl = "https://swe363api.onrender.com/comment/" + postId;
     const token = JSON.parse(localStorage.getItem("user")).token;
-    const headers = {'Content-Type': 'application/json','x-auth': token
-};
+    const headers = {'Content-Type': 'application/json','x-auth': token};
     const body = JSON.stringify({ text: commentText });
 
 
@@ -541,41 +540,58 @@ const username = user.username;
    <input type="password" id="password" name="password" value=${user.password}>`
 }
 }
-function edit_user(){
-const userLocal = localStorage.getItem("user");
-const user = JSON.parse(userLocal).user;
-console.log(user)
+async function edit_user() {
+    const userLocal = localStorage.getItem("user");
     const emailValue = document.getElementById('email').value;
     const passwordValue = document.getElementById('password').value;
     const usernameValue = document.getElementById('fName').value;
-    const token =  JSON.parse(userLocal).token;
-    const apiUrl = "https://swe363api.onrender.com/users/" + user._id;
-    fetch(apiUrl, {
+    const token = JSON.parse(userLocal).token;
+    const apiUrl = "https://swe363api.onrender.com/users/";
+
+    const user = {
+        email: emailValue,
+        password: passwordValue,
+        username: usernameValue
+    };
+
+    const headers = {
+        'Content-Type': 'application/json',
+        'x-auth': token
+    };
+
+    const requestBody = {
+        user: user 
+    };
+
+    console.log(JSON.stringify(requestBody)); 
+
+    try {
+        const response = await fetch(apiUrl, {
             method: "PUT",
-            headers: {
-                'Content-Type': 'application/json',
-                'x-auth': token
-            },
-            body: JSON.stringify({
-                email: emailValue,
-                password: passwordValue,
-                username: usernameValue
-            })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('invalid');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data)
-        })
-        .catch(error => {
-            // Alert the user if there's an error
-            alert(error.message);
+            headers: headers,
+            body: JSON.stringify(requestBody)
         });
+
+        if (!response.ok) {
+            throw new Error('Failed to update user.');
+        }
+
+        const data = await response.json();
+        console.log(data); 
+
+        const updatedUser = {
+            ...JSON.parse(userLocal),
+            user: data.user 
+        };
+        localStorage.setItem("user", JSON.stringify(updatedUser));
+
+        alert("User information updated successfully.");
+    } catch (error) {
+        console.error('Error updating user:', error);
+        alert("Failed to update user. Please try again.");
+    }
 }
+
 function loginButton(){
     if(localStorage.getItem('user') !== null){
     document.getElementById("login").style.display ="none";
@@ -586,6 +602,42 @@ function loginButton(){
             window.location.href = "loginpage.html";
         })    
     }
+}
+
+async function displayCartItems(){
+    productSection = document.getElementById("products")
+    cartPosts = []
+
+    const apiUrl = "https://swe363api.onrender.com/cart/";
+    const token = JSON.parse(localStorage.getItem("user")).token;
+    const headers = {'Content-Type': 'application/json','x-auth': token};
+
+
+    await fetch(apiUrl, {
+        method: "GET", 
+        headers: headers
+    }).
+    then(response => response.json())
+    .then(data => { 
+        data.cart.forEach(p => {
+            productSection.innerHTML += 
+            `<div class ="product"><img src="content/a8.png" alt="a8">
+                <div>
+                    <p class="bolded_p">${p.title}</p>
+                    <p class="description">${p.description}</p>
+                </div>
+                <input class ="number_of_items" type ="number" min="1" max="1" value="1">
+                <p class="price">${p.price} SAR</p>
+                <img class="delete" src="content/delete.png" alt="delete">
+            </div>`
+        })
+    });
+
+    to_pay = document.getElementById("pay")
+    to_pay.addEventListener("click", function () {
+        window.location.href = "pay.html";
+
+    })
 }
 function loginButtonForCreatePost(){
     if(localStorage.getItem('user') !== null){
